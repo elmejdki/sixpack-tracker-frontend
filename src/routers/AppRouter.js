@@ -3,6 +3,7 @@ import { createBrowserHistory } from 'history';
 import { Router, Route, Switch } from 'react-router-dom';
 import Navigator from '../components/Navigator';
 import MeasurePage from '../components/MeasurePage';
+import LoginPage from '../components/LoginPage';
 import MorePage from '../components/MorePage';
 import NotFoundPage from '../components/NotFoundPage';
 import ProgressPage from '../components/ProgressPage';
@@ -15,7 +16,8 @@ const AppRouter = () => (
     <div>
       <Navigator />
       <Switch>
-        <Route path="/" component={MeasurePage} />
+        <Route path="/" exact component={LoginPage} />
+        <Route path="/measure" component={MeasurePage} />
         <Route path="/track" component={TrackPage} />
         <Route path="/progress" component={ProgressPage} />
         <Route path="/more" component={MorePage} />
