@@ -5,6 +5,7 @@ import ConnectedPublicRoute from './PublicRoute';
 import ConnectedPrivateRoute from './PrivateRoute';
 import MeasurePage from '../components/MeasurePage';
 import LoginPage from '../components/LoginPage';
+import SignUpPage from '../components/SignUpPage';
 import MorePage from '../components/MorePage';
 import NotFoundPage from '../components/NotFoundPage';
 import ProgressPage from '../components/ProgressPage';
@@ -17,6 +18,7 @@ const AppRouter = () => (
     <div>
       <Switch>
         <ConnectedPublicRoute path="/" exact component={LoginPage} />
+        <ConnectedPublicRoute path="/signup" component={SignUpPage} />
         <ConnectedPrivateRoute path="/measure" component={MeasurePage} />
         <ConnectedPrivateRoute path="/track" component={TrackPage} />
         <ConnectedPrivateRoute path="/progress" component={ProgressPage} />
