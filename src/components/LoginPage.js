@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
+  appLogo,
+  appTitle,
+} from '../stylesheet/LoginPage.module.css';
+import {
   container,
   form,
   headline,
@@ -8,12 +12,10 @@ import {
   passwordButton,
   passwordImage,
   input,
-  appLogo,
-  appTitle,
   submitButton,
   link,
-  createAccount,
-} from '../stylesheet/LoginPage.module.css';
+  paraghraph,
+} from '../stylesheet/Form.module.css';
 import hidden from '../assets/images/hidden.png';
 import shown from '../assets/images/shown.png';
 import logo from '../assets/images/logo.png';
@@ -108,7 +110,7 @@ const LoginPage = () => {
           Log In
         </button>
         <p
-          className={createAccount}
+          className={paraghraph}
         >
           You don&apos;t have an account?&nbsp;
           <Link
