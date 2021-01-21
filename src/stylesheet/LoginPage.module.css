@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  flex-direction: column;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.headline {
+  color: rgb(93, 93, 93);
+  font-size: 40px;
+  margin-top: 30px;
+}
+
+.input {
+  height: 40px;
+  padding: 14px 10px;
+  font-size: 20px;
+  width: 100%;
+}
+
+.inputGroup {
+  margin-top: 20px;
+  position: relative;
+  width: 100%;
+}
+
+.passwordButton {
+  position: absolute;
+  right: 0;
+  top: 3px;
+  height: 40px;
+  width: 50px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.passwordImage {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+}
+
+.appLogo {
+  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin: 20px auto;
+}
+
+.appTitle {
+  color: grey;
+  text-align: center;
+  font-size: 20px;
+  font-weight: lighter;
+}
+
+.submitButton {
+  color: white;
+  background-color: #313944;
+  border: none;
+  font-size: 18px;
+  padding: 10px 15px;
+  align-self: flex-end;
+  margin-top: 20px;
+  outline: none;
+  font-weight: bold;
+}
+
+.submitButton:focus {
+  background-color: #41b5e8;
+}
+
+.createAccount {
+  color: grey;
+  margin-top: 30px;
+}
+
+.link {
+  color: #41b5e8;
+  text-decoration: none;
+  font-weight: bold;
+}
