@@ -13,7 +13,7 @@ export const PublicRoute = ({
     {...rest}
     component={props => (
       isAuthenticated ? (
-        <Redirect to="/dashboard" />
+        <Redirect to="/track" />
       ) : (
         <Component {...props} />
       )
@@ -23,7 +23,7 @@ export const PublicRoute = ({
 
 PublicRoute.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
-  component: PropTypes.func.isRequired,
+  component: PropTypes.elementType.isRequired,
 };
 
 const mapStateToProps = state => ({

@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { startLogIn } from '../actions/auth';
 import {
   appLogo,
   appTitle,
@@ -20,13 +23,15 @@ import hidden from '../assets/images/hidden.png';
 import shown from '../assets/images/shown.png';
 import logo from '../assets/images/logo.png';
 
-const LoginPage = () => {
+const LoginPage = ({ startLogIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [passwordInputType, setPasswordInputType] = useState('password');
 
   const handleSubmit = event => {
     event.preventDefault();
+
+    startLogIn(email, password);
   };
 
   const handleEmailChange = event => {
@@ -65,7 +70,7 @@ const LoginPage = () => {
         >
           <input
             className={input}
-            type="text"
+            type="email"
             placeholder="Your Email"
             value={email}
             onChange={handleEmailChange}
@@ -125,4 +130,12 @@ const LoginPage = () => {
   );
 };
 
-export default LoginPage;
+LoginPage.propTypes = {
+  startLogIn: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = {
+  startLogIn,
+};
+
+export default connect(null, mapDispatchToProps)(LoginPage);
