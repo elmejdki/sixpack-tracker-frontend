@@ -16,8 +16,6 @@ export const startLogIn = (email, password) => async dispatch => {
       password,
     };
 
-    console.log(credentials);
-
     const response = await fetch('http://localhost:3000/auth/login', {
       method: 'POST',
       headers: {
@@ -49,20 +47,16 @@ export const startSignUp = (
   avatar, username, email, password, confirmation,
 ) => async dispatch => {
   try {
-    const credentials = {
-      avatar,
-      username,
-      email,
-      password,
-      password_confirmation: confirmation,
-    };
+    const formData = new FormData();
+    formData.append('avatar', avatar);
+    formData.append('username', username);
+    formData.append('email', email);
+    formData.append('password', password);
+    formData.append('password_confirmation', confirmation);
 
     const response = await fetch('http://localhost:3000/signup', {
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(credentials),
+      body: formData,
     });
 
     const data = await response.json();
