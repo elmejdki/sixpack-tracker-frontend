@@ -65,6 +65,14 @@
   background-color: #41b5e8;
 }
 
+.submitSignup {
+  background-color: #41b5e8;
+}
+
+.submitSignup:focus {
+  background-color: #313944;
+}
+
 .paraghraph {
   color: grey;
   margin-top: 30px;
@@ -74,4 +82,25 @@
   color: #41b5e8;
   text-decoration: none;
   font-weight: bold;
+}
+
+.customFileInput {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.fileButton {
+  background-color: transparent;
+  border: none;
+  margin: 0 auto;
+  display: block;
+  outline: none;
+}
+
+.imageInput {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 0.5px solid rgb(155, 155, 155);
 }
