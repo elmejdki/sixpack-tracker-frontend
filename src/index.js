@@ -26,10 +26,6 @@ const renderApp = () => {
   }
 };
 
-// Authorization:
-// eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJleHAiOjE2MTEzMDYyNjR9.YiHj
-// eheG9-61IXLYOCagH7Jf7HLq6EglMetyXtipPug
-
 ReactDOM.render(<LoadingPage />, document.getElementById('root'));
 
 const token = localStorage.getItem('token');

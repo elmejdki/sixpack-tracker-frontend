@@ -18,6 +18,7 @@ import {
   submitButton,
   link,
   paraghraph,
+  error,
 } from '../stylesheet/Form.module.css';
 import hidden from '../assets/images/hidden.png';
 import shown from '../assets/images/shown.png';
@@ -26,6 +27,10 @@ import logo from '../assets/images/logo.png';
 const LoginPage = ({ startLogIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errors, setErrors] = useState({
+    email: false,
+    password: false,
+  });
   const [passwordInputType, setPasswordInputType] = useState('password');
 
   const handleSubmit = event => {
@@ -35,11 +40,27 @@ const LoginPage = ({ startLogIn }) => {
   };
 
   const handleEmailChange = event => {
-    setEmail(event.target.value);
+    setEmail(() => {
+      const newEmail = event.target.value;
+      if (newEmail === '') {
+        setErrors(prevState => ({ ...prevState, email: 'Email shouldn\'t be empty' }));
+      } else {
+        setErrors(prevState => ({ ...prevState, email: false }));
+      }
+      return newEmail;
+    });
   };
 
   const handlePasswordChange = event => {
-    setPassword(event.target.value);
+    setPassword(() => {
+      const newPassword = event.target.value;
+      if (newPassword === '') {
+        setErrors(prevState => ({ ...prevState, password: 'Password shouldn\'t be empty' }));
+      } else {
+        setErrors(prevState => ({ ...prevState, password: false }));
+      }
+      return newPassword;
+    });
   };
 
   const handleClick = () => {
@@ -75,6 +96,11 @@ const LoginPage = ({ startLogIn }) => {
             value={email}
             onChange={handleEmailChange}
           />
+          {
+            errors.email && (
+              <p className={error}>{errors.email}</p>
+            )
+          }
         </div>
         <div
           className={inputGroup}
@@ -107,6 +133,11 @@ const LoginPage = ({ startLogIn }) => {
               )
             }
           </button>
+          {
+            errors.password && (
+              <p className={error}>{errors.password}</p>
+            )
+          }
         </div>
         <button
           type="submit"

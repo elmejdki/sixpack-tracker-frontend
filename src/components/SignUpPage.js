@@ -16,6 +16,7 @@ import {
   passwordButton,
   passwordImage,
   imageInput,
+  noMargin,
 } from '../stylesheet/Form.module.css';
 import hidden from '../assets/images/hidden.png';
 import shown from '../assets/images/shown.png';
@@ -57,7 +58,7 @@ const SignUpPage = () => {
       <form
         className={form}
       >
-        <h1 className={headline}>Sign Up</h1>
+        <h1 className={`${headline} ${noMargin}`}>Sign Up</h1>
         <div
           className={inputGroup}
         >
@@ -81,6 +82,7 @@ const SignUpPage = () => {
               className={customFileInput}
               onInput={testHandler}
             />
+            <p className={fileButton}>Select Image</p>
           </div>
         </div>
         <div

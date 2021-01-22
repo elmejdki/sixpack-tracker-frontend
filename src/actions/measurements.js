@@ -11,27 +11,33 @@ export const addMeasurement = measurement => ({
 });
 
 export const startSetMeasurements = () => async (dispatch, getState) => {
-  const { auth: { token } } = getState();
+  try {
+    const { auth: { token } } = getState();
 
-  const response = await fetch(
-    'http://localhost:3000/measurements',
-    {
-      headers: new Headers({
-        Authorization: token,
-        'Content-Type': 'application/x-www-form-urlencoded',
-      }),
-    },
-  );
+    const response = await fetch(
+      'http://localhost:3000/measurements',
+      {
+        headers: new Headers({
+          Authorization: token,
+          'Content-Type': 'application/x-www-form-urlencoded',
+        }),
+      },
+    );
 
-  const data = await response.json();
+    const data = await response.json();
 
-  if (
-    response.status !== 200) {
-    // TODO: add later a specific reducer for error handling
+    if (response.status !== 200) {
+      // TODO: add later a specific reducer for error handling
+      return {
+        error: data.message,
+      };
+    }
+
+    return dispatch(setMeasurements(data));
+  } catch (err) {
     return {
-      error: data.message,
+      // TODO: add later a specific reducer for error handling
+      error: err.message,
     };
   }
-
-  return dispatch(setMeasurements(data));
 };
