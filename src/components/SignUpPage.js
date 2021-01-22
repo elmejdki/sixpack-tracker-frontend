@@ -17,16 +17,132 @@ import {
   passwordImage,
   imageInput,
   noMargin,
+  error,
 } from '../stylesheet/Form.module.css';
 import hidden from '../assets/images/hidden.png';
 import shown from '../assets/images/shown.png';
 import image from '../assets/images/user-image.png';
 
 const SignUpPage = () => {
+  const fileInput = React.createRef();
+
   const [passwordInputType, setPasswordInputType] = useState('password');
   const [userImage, setUserImage] = useState(image);
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [confirmation, setConfirmation] = useState('');
+  const [errors, setErrors] = useState({
+    username: true,
+    email: true,
+    password: true,
+    password_confirmation: true,
+  });
 
-  const fileInput = React.createRef();
+  const handleUsernameChange = e => {
+    setUsername(() => {
+      const newUsername = e.target.value;
+
+      if (newUsername === '') {
+        setErrors(prevErrors => ({
+          ...prevErrors,
+          username: 'Shouldn\'t be empty',
+        }));
+      } else if (newUsername.length < 6) {
+        setErrors(prevErrors => ({
+          ...prevErrors,
+          username: 'Should at least be 6 characters long',
+        }));
+      } else {
+        setErrors(prevErrors => ({
+          ...prevErrors,
+          username: false,
+        }));
+      }
+
+      return newUsername;
+    });
+  };
+
+  const handleEmailChange = e => {
+    setEmail(() => {
+      const newEmail = e.target.value;
+
+      if (newEmail === '') {
+        setErrors(prevErrors => ({
+          ...prevErrors,
+          email: 'Shouldn\'t be empty',
+        }));
+      } else if (newEmail.length < 6) {
+        setErrors(prevErrors => ({
+          ...prevErrors,
+          email: 'Should at least be 10 characters long',
+        }));
+      } else {
+        setErrors(prevErrors => ({
+          ...prevErrors,
+          email: false,
+        }));
+      }
+
+      return newEmail;
+    });
+  };
+
+  const handlePasswordChange = e => {
+    setPassword(() => {
+      const newPassword = e.target.value;
+
+      if (newPassword === '') {
+        setErrors(prevErrors => ({
+          ...prevErrors,
+          password: 'Shouldn\'t be empty',
+        }));
+      } else if (newPassword.length < 6) {
+        setErrors(prevErrors => ({
+          ...prevErrors,
+          password: 'Should at least be 6 characters long',
+        }));
+      } else {
+        setErrors(prevErrors => ({
+          ...prevErrors,
+          password: false,
+        }));
+      }
+
+      return newPassword;
+    });
+  };
+
+  const handleConfirmationChange = e => {
+    setConfirmation(() => {
+      const newConfirmation = e.target.value;
+
+      if (newConfirmation === '') {
+        setErrors(prevErrors => ({
+          ...prevErrors,
+          password_confirmation: 'Shouldn\'t be empty',
+        }));
+      } else if (newConfirmation.length < 6) {
+        setErrors(prevErrors => ({
+          ...prevErrors,
+          password_confirmation: 'Should at least be 6 characters long',
+        }));
+      } else if (password !== newConfirmation) {
+        setErrors(prevErrors => ({
+          ...prevErrors,
+          password_confirmation: 'Should match password',
+        }));
+      } else {
+        setErrors(prevErrors => ({
+          ...prevErrors,
+          password_confirmation: false,
+        }));
+      }
+
+      return newConfirmation;
+    });
+  };
 
   const handleClick = () => {
     setPasswordInputType(
@@ -51,12 +167,25 @@ const SignUpPage = () => {
     }
   };
 
+  const handleSubmit = e => {
+    const {
+      username, password, email,
+      password_confirmation: passwordConfirmation,
+    } = errors;
+    e.preventDefault();
+
+    if (!username && !password && !email && !passwordConfirmation) {
+      console.log('start sign up');
+    }
+  };
+
   return (
     <div
       className={container}
     >
       <form
         className={form}
+        onSubmit={handleSubmit}
       >
         <h1 className={`${headline} ${noMargin}`}>Sign Up</h1>
         <div
@@ -82,7 +211,11 @@ const SignUpPage = () => {
               className={customFileInput}
               onInput={testHandler}
             />
-            <p className={fileButton}>Select Image</p>
+            {
+              userImage === image && (
+                <p className={fileButton}>Select Image</p>
+              )
+            }
           </div>
         </div>
         <div
@@ -92,7 +225,14 @@ const SignUpPage = () => {
             className={input}
             type="text"
             placeholder="Username"
+            value={username}
+            onChange={handleUsernameChange}
           />
+          {
+            errors.username && (
+              <p className={error}>{errors.username}</p>
+            )
+          }
         </div>
         <div
           className={inputGroup}
@@ -101,7 +241,14 @@ const SignUpPage = () => {
             className={input}
             type="email"
             placeholder="Your Email"
+            value={email}
+            onChange={handleEmailChange}
           />
+          {
+            errors.email && (
+              <p className={error}>{errors.email}</p>
+            )
+          }
         </div>
         <div
           className={inputGroup}
@@ -110,6 +257,8 @@ const SignUpPage = () => {
             className={input}
             type={passwordInputType}
             placeholder="Password"
+            value={password}
+            onChange={handlePasswordChange}
           />
           <button
             className={passwordButton}
@@ -132,6 +281,11 @@ const SignUpPage = () => {
               )
             }
           </button>
+          {
+            errors.password && (
+              <p className={error}>{errors.password}</p>
+            )
+          }
         </div>
         <div
           className={inputGroup}
@@ -140,6 +294,8 @@ const SignUpPage = () => {
             className={input}
             type={passwordInputType}
             placeholder="Password Confirmation"
+            value={confirmation}
+            onChange={handleConfirmationChange}
           />
           <button
             className={passwordButton}
@@ -162,6 +318,11 @@ const SignUpPage = () => {
               )
             }
           </button>
+          {
+            errors.password_confirmation && (
+              <p className={error}>{errors.password_confirmation}</p>
+            )
+          }
         </div>
         <button
           type="submit"

@@ -36,16 +36,18 @@ const LoginPage = ({ startLogIn }) => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    startLogIn(email, password);
+    if (!errors.username && !errors.password) {
+      startLogIn(email, password);
+    }
   };
 
   const handleEmailChange = event => {
     setEmail(() => {
       const newEmail = event.target.value;
       if (newEmail === '') {
-        setErrors(prevState => ({ ...prevState, email: 'Email shouldn\'t be empty' }));
+        setErrors(prevState => ({ ...prevState, email: 'Shouldn\'t be empty' }));
       } else {
-        setErrors(prevState => ({ ...prevState, email: false }));
+        setErrors(prevState => ({ ...prevState, email: true }));
       }
       return newEmail;
     });
@@ -55,9 +57,9 @@ const LoginPage = ({ startLogIn }) => {
     setPassword(() => {
       const newPassword = event.target.value;
       if (newPassword === '') {
-        setErrors(prevState => ({ ...prevState, password: 'Password shouldn\'t be empty' }));
+        setErrors(prevState => ({ ...prevState, password: 'Shouldn\'t be empty' }));
       } else {
-        setErrors(prevState => ({ ...prevState, password: false }));
+        setErrors(prevState => ({ ...prevState, password: true }));
       }
       return newPassword;
     });
