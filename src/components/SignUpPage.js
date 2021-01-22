@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { startSignUp } from '../actions/auth';
 import {
   container,
   form,
@@ -18,12 +21,13 @@ import {
   imageInput,
   noMargin,
   error,
+  fileTitle,
 } from '../stylesheet/Form.module.css';
 import hidden from '../assets/images/hidden.png';
 import shown from '../assets/images/shown.png';
 import image from '../assets/images/user-image.png';
 
-const SignUpPage = () => {
+const SignUpPage = ({ startSignUp }) => {
   const fileInput = React.createRef();
 
   const [passwordInputType, setPasswordInputType] = useState('password');
@@ -48,10 +52,10 @@ const SignUpPage = () => {
           ...prevErrors,
           username: 'Shouldn\'t be empty',
         }));
-      } else if (newUsername.length < 6) {
+      } else if (newUsername.length < 4) {
         setErrors(prevErrors => ({
           ...prevErrors,
-          username: 'Should at least be 6 characters long',
+          username: 'Should at least be 4 characters long',
         }));
       } else {
         setErrors(prevErrors => ({
@@ -73,7 +77,7 @@ const SignUpPage = () => {
           ...prevErrors,
           email: 'Shouldn\'t be empty',
         }));
-      } else if (newEmail.length < 6) {
+      } else if (newEmail.length < 10) {
         setErrors(prevErrors => ({
           ...prevErrors,
           email: 'Should at least be 10 characters long',
@@ -168,14 +172,20 @@ const SignUpPage = () => {
   };
 
   const handleSubmit = e => {
-    const {
-      username, password, email,
-      password_confirmation: passwordConfirmation,
-    } = errors;
     e.preventDefault();
+    const imageFile = fileInput.current.files[0];
 
-    if (!username && !password && !email && !passwordConfirmation) {
-      console.log('start sign up');
+    const {
+      username: usernameError,
+      email: emailError,
+      password_confirmation: confirmationError,
+      password: passwordError,
+    } = errors;
+
+    if (!usernameError && !passwordError && !emailError && !confirmationError) {
+      startSignUp(
+        imageFile, username, email, password, confirmation,
+      );
     }
   };
 
@@ -213,7 +223,7 @@ const SignUpPage = () => {
             />
             {
               userImage === image && (
-                <p className={fileButton}>Select Image</p>
+                <p className={fileTitle}>Select Image</p>
               )
             }
           </div>
@@ -264,6 +274,7 @@ const SignUpPage = () => {
             className={passwordButton}
             type="button"
             onClick={handleClick}
+            tabIndex="-1"
           >
             {
               passwordInputType === 'password' ? (
@@ -301,6 +312,7 @@ const SignUpPage = () => {
             className={passwordButton}
             type="button"
             onClick={handleClick}
+            tabIndex="-1"
           >
             {
               passwordInputType === 'password' ? (
@@ -346,4 +358,12 @@ const SignUpPage = () => {
   );
 };
 
-export default SignUpPage;
+SignUpPage.propTypes = {
+  startSignUp: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = {
+  startSignUp,
+};
+
+export default connect(null, mapDispatchToProps)(SignUpPage);

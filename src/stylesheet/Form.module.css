@@ -13,6 +13,11 @@
   width: 300px;
 }
 
+.fileTitle {
+  font-weight: bold;
+  text-align: center;
+}
+
 .headline {
   color: rgb(93, 93, 93);
   font-size: 40px;
@@ -110,8 +115,12 @@
 }
 
 .imageInput {
-  width: 120px;
-  height: 120px;
+  min-width: 120px;
+  min-height: 120px;
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: cover;
+  object-position: center;
   border-radius: 50%;
   border: 0.5px solid rgb(155, 155, 155);
 }

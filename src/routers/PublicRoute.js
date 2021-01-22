@@ -7,13 +7,14 @@ import { Redirect, Route } from 'react-router-dom';
 export const PublicRoute = ({
   isAuthenticated,
   component: Component,
+  to,
   ...rest
 }) => (
   <Route
     {...rest}
     component={props => (
       isAuthenticated ? (
-        <Redirect to="/track" />
+        <Redirect to={to} />
       ) : (
         <Component {...props} />
       )
@@ -24,6 +25,7 @@ export const PublicRoute = ({
 PublicRoute.propTypes = {
   isAuthenticated: PropTypes.bool.isRequired,
   component: PropTypes.elementType.isRequired,
+  to: PropTypes.string.isRequired,
 };
 
 const mapStateToProps = state => ({

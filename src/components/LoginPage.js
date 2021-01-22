@@ -28,8 +28,8 @@ const LoginPage = ({ startLogIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState({
-    email: false,
-    password: false,
+    email: true,
+    password: true,
   });
   const [passwordInputType, setPasswordInputType] = useState('password');
 
@@ -47,7 +47,7 @@ const LoginPage = ({ startLogIn }) => {
       if (newEmail === '') {
         setErrors(prevState => ({ ...prevState, email: 'Shouldn\'t be empty' }));
       } else {
-        setErrors(prevState => ({ ...prevState, email: true }));
+        setErrors(prevState => ({ ...prevState, email: false }));
       }
       return newEmail;
     });
@@ -59,7 +59,7 @@ const LoginPage = ({ startLogIn }) => {
       if (newPassword === '') {
         setErrors(prevState => ({ ...prevState, password: 'Shouldn\'t be empty' }));
       } else {
-        setErrors(prevState => ({ ...prevState, password: true }));
+        setErrors(prevState => ({ ...prevState, password: false }));
       }
       return newPassword;
     });
