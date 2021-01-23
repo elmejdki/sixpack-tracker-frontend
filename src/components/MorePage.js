@@ -1,10 +1,15 @@
 import React from 'react';
 import Header from './Header';
+import {
+  container,
+} from '../stylesheet/CommonPage.module.css';
 
 const MorePage = () => (
   <div>
     <Header title="Track.it" />
-    <h1>More Page</h1>
+    <div className={container}>
+      <h1>More Page</h1>
+    </div>
   </div>
 );
 

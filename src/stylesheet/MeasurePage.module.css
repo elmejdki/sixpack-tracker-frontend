@@ -1,0 +1,50 @@
+.measureContainer {
+  display: grid;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcomeContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 250px;
+  margin-bottom: 40px;
+  padding: 50px 0;
+  background-color: white;
+}
+
+.welcomeText {
+  color: grey;
+  font-weight: lighter;
+  width: 169px;
+  text-align: center;
+}
+
+.reversedTriangle {
+  border-top: 30px solid white;
+  border-left: 30px solid white;
+  transform: rotate(-45deg);
+  position: absolute;
+  bottom: -14px;
+}
+
+.button {
+  border-radius: 50%;
+  min-width: 260px;
+  max-width: 260px;
+  max-height: 260px;
+  min-height: 260px;
+  border: 20px solid white;
+  background-color: #41b5e8;
+  color: white;
+  font-weight: lighter;
+  font-size: 60px;
+  outline: none;
+}
+
+.button:focus {
+  background-color: white;
+  color: #41b5e8;
+}

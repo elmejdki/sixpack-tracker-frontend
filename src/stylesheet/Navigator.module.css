@@ -25,9 +25,8 @@
 
 .links {
   display: flex;
-  position: absolute;
+  position: sticky;
   bottom: 0;
-  right: 0;
 }
 
 .activeLink {
