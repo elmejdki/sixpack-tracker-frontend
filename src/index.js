@@ -3,10 +3,11 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
-import LoadingPage from './components/LoadingPage';
 import { login, logout } from './actions/auth';
 import { startSetMeasurements } from './actions/measurements';
+import Loader from './components/Loader';
 import './index.css';
+import { fullHeight } from './stylesheet/CommonPage.module.css';
 
 const store = configureStore();
 
@@ -26,7 +27,7 @@ const renderApp = () => {
   }
 };
 
-ReactDOM.render(<LoadingPage />, document.getElementById('root'));
+ReactDOM.render(<Loader height={fullHeight} />, document.getElementById('root'));
 
 const token = localStorage.getItem('token');
 

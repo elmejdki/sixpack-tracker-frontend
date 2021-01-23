@@ -3,44 +3,35 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { startSignUp } from '../actions/auth';
+import Loader from './Loader';
+import FileUploader from './FileUploader';
+import TextInput from './TextInput';
+import PasswordInput from './PasswordInput';
 import {
   container,
   form,
-  input,
   headline,
-  inputGroup,
   submitButton,
   submitSignup,
   paraghraph,
   link,
-  customFileInput,
-  fileContainer,
-  fileButton,
-  passwordButton,
-  passwordImage,
-  imageInput,
   noMargin,
-  error,
-  fileTitle,
 } from '../stylesheet/Form.module.css';
-import hidden from '../assets/images/hidden.png';
-import shown from '../assets/images/shown.png';
-import image from '../assets/images/user-image.png';
+import { fullHeight } from '../stylesheet/CommonPage.module.css';
 
 const SignUpPage = ({ startSignUp }) => {
-  const fileInput = React.createRef();
+  const fileRef = React.createRef();
 
-  const [passwordInputType, setPasswordInputType] = useState('password');
-  const [userImage, setUserImage] = useState(image);
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmation, setConfirmation] = useState('');
+  const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({
-    username: true,
-    email: true,
-    password: true,
-    password_confirmation: true,
+    username: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
   });
 
   const handleUsernameChange = e => {
@@ -60,7 +51,7 @@ const SignUpPage = ({ startSignUp }) => {
       } else {
         setErrors(prevErrors => ({
           ...prevErrors,
-          username: false,
+          username: '',
         }));
       }
 
@@ -85,7 +76,7 @@ const SignUpPage = ({ startSignUp }) => {
       } else {
         setErrors(prevErrors => ({
           ...prevErrors,
-          email: false,
+          email: '',
         }));
       }
 
@@ -110,9 +101,11 @@ const SignUpPage = ({ startSignUp }) => {
       } else {
         setErrors(prevErrors => ({
           ...prevErrors,
-          password: false,
+          password: '',
         }));
       }
+
+      // TODO: make sure that password and confirmation match correctly
 
       return newPassword;
     });
@@ -140,7 +133,7 @@ const SignUpPage = ({ startSignUp }) => {
       } else {
         setErrors(prevErrors => ({
           ...prevErrors,
-          password_confirmation: false,
+          password_confirmation: '',
         }));
       }
 
@@ -148,32 +141,9 @@ const SignUpPage = ({ startSignUp }) => {
     });
   };
 
-  const handleClick = () => {
-    setPasswordInputType(
-      prevType => (prevType === 'password' ? 'text' : 'password'),
-    );
-  };
-
-  const handleFileClick = e => {
-    e.preventDefault();
-    fileInput.current.click();
-  };
-
-  const testHandler = () => {
-    if (fileInput.current.files && fileInput.current.files[0]) {
-      const reader = new FileReader();
-
-      reader.onload = e => {
-        setUserImage(e.target.result);
-      };
-
-      reader.readAsDataURL(fileInput.current.files[0]);
-    }
-  };
-
   const handleSubmit = e => {
     e.preventDefault();
-    const imageFile = fileInput.current.files[0];
+    const imageFile = fileRef.current.files[0];
 
     const {
       username: usernameError,
@@ -183,178 +153,76 @@ const SignUpPage = ({ startSignUp }) => {
     } = errors;
 
     if (!usernameError && !passwordError && !emailError && !confirmationError) {
+      setLoading(true);
       startSignUp(
         imageFile, username, email, password, confirmation,
-      );
+      ).then(() => {
+        setLoading(false);
+      });
     }
   };
 
   return (
-    <div
-      className={container}
-    >
-      <form
-        className={form}
-        onSubmit={handleSubmit}
-      >
-        <h1 className={`${headline} ${noMargin}`}>Sign Up</h1>
-        <div
-          className={inputGroup}
-        >
+    <>
+      {
+        loading ? (
+          <Loader height={fullHeight} />
+        ) : (
           <div
-            className={fileContainer}
+            className={container}
           >
-            <button
-              className={fileButton}
-              type="button"
-              onClick={handleFileClick}
+            <form
+              className={form}
+              onSubmit={handleSubmit}
             >
-              <img
-                className={imageInput}
-                src={userImage}
-                alt="new user pic"
+              <h1 className={`${headline} ${noMargin}`}>Sign Up</h1>
+              <FileUploader fileRef={fileRef} />
+              <TextInput
+                placeholder="Username"
+                email={username}
+                error={errors.username}
+                handleTextChange={handleUsernameChange}
               />
-            </button>
-            <input
-              ref={fileInput}
-              type="file"
-              className={customFileInput}
-              onInput={testHandler}
-            />
-            {
-              userImage === image && (
-                <p className={fileTitle}>Select Image</p>
-              )
-            }
+              <TextInput
+                placeholder="Your Email"
+                email={email}
+                error={errors.email}
+                handleTextChange={handleEmailChange}
+              />
+              <PasswordInput
+                placeholder="Password"
+                password={password}
+                error={errors.password}
+                handlePasswordChange={handlePasswordChange}
+              />
+              <PasswordInput
+                placeholder="Password Confirmation"
+                password={confirmation}
+                error={errors.password_confirmation}
+                handlePasswordChange={handleConfirmationChange}
+              />
+              <button
+                type="submit"
+                className={`${submitButton} ${submitSignup}`}
+              >
+                Sign Up
+              </button>
+              <p
+                className={paraghraph}
+              >
+                You have already an account?&nbsp;
+                <Link
+                  to="/"
+                  className={link}
+                >
+                  Sign In
+                </Link>
+              </p>
+            </form>
           </div>
-        </div>
-        <div
-          className={inputGroup}
-        >
-          <input
-            className={input}
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={handleUsernameChange}
-          />
-          {
-            errors.username && (
-              <p className={error}>{errors.username}</p>
-            )
-          }
-        </div>
-        <div
-          className={inputGroup}
-        >
-          <input
-            className={input}
-            type="email"
-            placeholder="Your Email"
-            value={email}
-            onChange={handleEmailChange}
-          />
-          {
-            errors.email && (
-              <p className={error}>{errors.email}</p>
-            )
-          }
-        </div>
-        <div
-          className={inputGroup}
-        >
-          <input
-            className={input}
-            type={passwordInputType}
-            placeholder="Password"
-            value={password}
-            onChange={handlePasswordChange}
-          />
-          <button
-            className={passwordButton}
-            type="button"
-            onClick={handleClick}
-            tabIndex="-1"
-          >
-            {
-              passwordInputType === 'password' ? (
-                <img
-                  src={hidden}
-                  className={passwordImage}
-                  alt="blue eye"
-                />
-              ) : (
-                <img
-                  src={shown}
-                  className={passwordImage}
-                  alt="black eye"
-                />
-              )
-            }
-          </button>
-          {
-            errors.password && (
-              <p className={error}>{errors.password}</p>
-            )
-          }
-        </div>
-        <div
-          className={inputGroup}
-        >
-          <input
-            className={input}
-            type={passwordInputType}
-            placeholder="Password Confirmation"
-            value={confirmation}
-            onChange={handleConfirmationChange}
-          />
-          <button
-            className={passwordButton}
-            type="button"
-            onClick={handleClick}
-            tabIndex="-1"
-          >
-            {
-              passwordInputType === 'password' ? (
-                <img
-                  src={hidden}
-                  className={passwordImage}
-                  alt="blue eye"
-                />
-              ) : (
-                <img
-                  src={shown}
-                  className={passwordImage}
-                  alt="black eye"
-                />
-              )
-            }
-          </button>
-          {
-            errors.password_confirmation && (
-              <p className={error}>{errors.password_confirmation}</p>
-            )
-          }
-        </div>
-        <button
-          type="submit"
-          className={`${submitButton} ${submitSignup}`}
-        >
-          Sign Up
-        </button>
-        <p
-          className={paraghraph}
-        >
-          You have already an account?&nbsp;
-          <Link
-            to="/"
-            className={link}
-          >
-            Sign In
-          </Link>
-        </p>
-      </form>
-    </div>
+        )
+      }
+    </>
   );
 };
 
