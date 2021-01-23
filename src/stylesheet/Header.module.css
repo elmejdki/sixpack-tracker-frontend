@@ -1,0 +1,10 @@
+.headline {
+  background-color: #41b5e8;
+  font-weight: bold;
+  color: white;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 18px;
+  position: sticky;
+  top: 0;
+}
