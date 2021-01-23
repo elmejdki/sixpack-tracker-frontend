@@ -176,7 +176,9 @@ const SignUpPage = ({ startSignUp }) => {
               onSubmit={handleSubmit}
             >
               <h1 className={`${headline} ${noMargin}`}>Sign Up</h1>
-              <FileUploader fileRef={fileRef} />
+              <FileUploader
+                fileRef={fileRef}
+              />
               <TextInput
                 placeholder="Username"
                 email={username}

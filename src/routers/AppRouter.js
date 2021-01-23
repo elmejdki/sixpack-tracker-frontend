@@ -10,6 +10,7 @@ import MorePage from '../components/MorePage';
 import NotFoundPage from '../components/NotFoundPage';
 import ProgressPage from '../components/ProgressPage';
 import TrackPage from '../components/TrackPage';
+import MeasuresManager from '../components/MeasuresManager';
 
 export const history = createBrowserHistory();
 
@@ -23,6 +24,11 @@ const AppRouter = () => (
         <ConnectedPrivateRoute path="/track" component={TrackPage} />
         <ConnectedPrivateRoute path="/progress" component={ProgressPage} />
         <ConnectedPrivateRoute path="/more" component={MorePage} />
+        {
+          true && (
+            <ConnectedPrivateRoute path="/editmeasures" component={MeasuresManager} />
+          )
+        }
         <Route component={NotFoundPage} />
       </Switch>
     </div>

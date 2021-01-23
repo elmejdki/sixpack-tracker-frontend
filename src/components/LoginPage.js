@@ -26,6 +26,7 @@ const LoginPage = ({ startLogIn }) => {
   const [password, setPassword] = useState('');
   const [emailError, setEmailError] = useState('');
   const [passwordError, setPasswordError] = useState('');
+
   const [loading, setLoading] = useState(false);
 
   const handleEmailChange = event => {
