@@ -10,8 +10,15 @@
   max-width: 70px;
   max-height: 70px;
   border-radius: 50%;
-  background-color: #41b5e8;
   box-shadow: 0 0 37px -13px black;
+}
+
+.activeLink {
+  background-color: #41b5e8;
+}
+
+.inActiveLink {
+  background-color: #313944;
 }
 
 .img {

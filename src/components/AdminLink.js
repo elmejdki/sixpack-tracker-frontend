@@ -1,22 +1,31 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import addMeasureLogo from '../assets/images/add-measure-logo.png';
+// eslint-disable-next-line import/no-cycle
+import { history } from '../routers/AppRouter';
+import editMeasure from '../assets/images/edit-measures.png';
 import {
   link,
+  activeLink,
+  inActiveLink,
   img,
 } from '../stylesheet/AdminLink.module.css';
 
-const AdminLink = () => (
-  <Link
-    className={link}
-    to="/editMeasures"
-  >
-    <img
-      src={addMeasureLogo}
-      alt="Edit Measure Logo"
-      className={img}
-    />
-  </Link>
-);
+const AdminLink = () => {
+  const linkClassName = history.location.pathname
+    === '/editMeasures' ? activeLink : inActiveLink;
+
+  return (
+    <Link
+      className={`${link} ${linkClassName}`}
+      to="/editMeasures"
+    >
+      <img
+        src={editMeasure}
+        alt="Edit Measure Logo"
+        className={img}
+      />
+    </Link>
+  );
+};
 
 export default AdminLink;
