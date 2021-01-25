@@ -1,3 +1,5 @@
+import { startSetUserData } from './user_data';
+import { startSetMeasurements } from './measurements';
 import { LOGIN, LOGOUT } from '../action_types';
 
 export const login = token => ({
@@ -27,8 +29,13 @@ export const startLogIn = (email, password) => async dispatch => {
     const data = await response.json();
 
     if (response.status === 200) {
-      dispatch(login(data.auth_token));
       localStorage.setItem('token', data.auth_token);
+      dispatch(login(data.auth_token));
+
+      await dispatch(startSetUserData());
+      await dispatch(startSetMeasurements());
+
+      return 'login correctly';
     }
 
     // TODO: dispatch the error in the errors reducer
@@ -48,7 +55,9 @@ export const startSignUp = (
 ) => async dispatch => {
   try {
     const formData = new FormData();
-    formData.append('avatar', avatar);
+    if (avatar) {
+      formData.append('avatar', avatar);
+    }
     formData.append('username', username);
     formData.append('email', email);
     formData.append('password', password);
@@ -62,8 +71,13 @@ export const startSignUp = (
     const data = await response.json();
 
     if (response.status === 201) {
-      dispatch(login(data.auth_token));
       localStorage.setItem('token', data.auth_token);
+      dispatch(login(data.auth_token));
+
+      await dispatch(startSetUserData());
+      await dispatch(startSetMeasurements());
+
+      return 'signup correctly';
     }
 
     // TODO: dispatch the error in the errors reducer
