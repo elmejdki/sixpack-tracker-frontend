@@ -21,7 +21,7 @@ const Navigator = ({ role }) => (
     }
     <div className={links}>
       <NavLink
-        to="/measure"
+        to="/measurement"
         exact
         className={link}
         activeClassName={activeLink}

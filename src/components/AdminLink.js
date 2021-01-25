@@ -12,12 +12,12 @@ import {
 
 const AdminLink = () => {
   const linkClassName = history.location.pathname
-    === '/editMeasures' ? activeLink : inActiveLink;
+    === '/measures' ? activeLink : inActiveLink;
 
   return (
     <Link
       className={`${link} ${linkClassName}`}
-      to="/editMeasures"
+      to="/measures"
     >
       <img
         src={editMeasure}

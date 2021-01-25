@@ -21,13 +21,13 @@ const AppRouter = () => (
       <Switch>
         <ConnectedPublicRoute path="/" exact component={LoginPage} />
         <ConnectedPublicRoute path="/signup" component={SignUpPage} />
-        <ConnectedPrivateRoute path="/measure" component={MeasurementPage} />
+        <ConnectedPrivateRoute path="/measurement" component={MeasurementPage} />
         <ConnectedPrivateRoute path="/track" component={TrackPage} />
         <ConnectedPrivateRoute path="/progress" component={ProgressPage} />
         <ConnectedPrivateRoute path="/more" component={MorePage} />
         {
           true && (
-            <ConnectedPrivateRoute path="/editmeasures" component={MeasuresManager} />
+            <ConnectedPrivateRoute path="/measures" component={MeasuresManager} />
           )
         }
         <Route component={NotFoundPage} />
