@@ -24,8 +24,8 @@ import logo from '../assets/images/logo.png';
 const LoginPage = ({ startLogIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
+  const [emailError, setEmailError] = useState('Shouldn\'t be empty');
+  const [passwordError, setPasswordError] = useState('Shouldn\'t be empty');
 
   const [loading, setLoading] = useState(false);
 

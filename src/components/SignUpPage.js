@@ -28,10 +28,10 @@ const SignUpPage = ({ startSignUp }) => {
   const [confirmation, setConfirmation] = useState('');
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({
-    username: '',
-    email: '',
-    password: '',
-    password_confirmation: '',
+    username: 'Shouldn\'t be empty',
+    email: 'Shouldn\'t be empty',
+    password: 'Shouldn\'t be empty',
+    password_confirmation: 'Shouldn\'t be empty',
   });
 
   const handleUsernameChange = e => {
