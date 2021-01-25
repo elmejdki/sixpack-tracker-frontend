@@ -7,16 +7,16 @@ import {
 } from '../stylesheet/Form.module.css';
 
 const TextInput = ({
-  email, error, handleTextChange, placeholder,
+  text, type, error, handleTextChange, placeholder,
 }) => (
   <div
     className={inputGroup}
   >
     <input
       className={input}
-      type="email"
+      type={type}
       placeholder={placeholder}
-      value={email}
+      value={text}
       onChange={handleTextChange}
     />
     {
@@ -29,8 +29,9 @@ const TextInput = ({
 
 TextInput.propTypes = {
   placeholder: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
   error: PropTypes.string.isRequired,
-  email: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
   handleTextChange: PropTypes.func.isRequired,
 };
 

@@ -156,8 +156,10 @@ const SignUpPage = ({ startSignUp }) => {
       setLoading(true);
       startSignUp(
         imageFile, username, email, password, confirmation,
-      ).then(() => {
-        setLoading(false);
+      ).then(({ error }) => {
+        if (error) {
+          setLoading(false);
+        }
       });
     }
   };
@@ -181,13 +183,15 @@ const SignUpPage = ({ startSignUp }) => {
               />
               <TextInput
                 placeholder="Username"
-                email={username}
+                type="text"
+                text={username}
                 error={errors.username}
                 handleTextChange={handleUsernameChange}
               />
               <TextInput
                 placeholder="Your Email"
-                email={email}
+                type="email"
+                text={email}
                 error={errors.email}
                 handleTextChange={handleEmailChange}
               />

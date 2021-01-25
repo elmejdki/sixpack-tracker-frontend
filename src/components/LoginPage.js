@@ -91,7 +91,8 @@ const LoginPage = ({ startLogIn }) => {
               <h1 className={headline}>Login</h1>
               <TextInput
                 placeholder="Your Email"
-                email={email}
+                type="email"
+                text={email}
                 error={emailError}
                 handleTextChange={handleEmailChange}
               />
