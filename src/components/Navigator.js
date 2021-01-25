@@ -1,5 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+// eslint-disable-next-line import/no-cycle
 import AdminLink from './AdminLink';
 import {
   link, links, linkImage, linkTitle, activeLink,
@@ -9,10 +12,10 @@ import trackLogo from '../assets/images/track-logo.png';
 import progressLogo from '../assets/images/progress-logo.png';
 import moreLogo from '../assets/images/more.png';
 
-const Navigator = () => (
+const Navigator = ({ role }) => (
   <>
     {
-      true && (
+      role === 'admin' && (
         <AdminLink />
       )
     }
@@ -70,4 +73,16 @@ const Navigator = () => (
   </>
 );
 
-export default Navigator;
+Navigator.propTypes = {
+  role: PropTypes.string,
+};
+
+Navigator.defaultProps = {
+  role: 'user',
+};
+
+const mapSatetToProps = ({ userData }) => ({
+  role: userData.role,
+});
+
+export default connect(mapSatetToProps)(Navigator);
