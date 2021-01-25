@@ -9,3 +9,17 @@
   top: 0;
   z-index: 100;
 }
+
+.logoutBtn {
+  width: 25px;
+  height: 25px;
+  position: absolute;
+  right: 20px;
+  background-color: transparent;
+  border: none;
+}
+
+.logoutBtn img {
+  width: 100%;
+  height: 100%;
+}

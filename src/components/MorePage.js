@@ -6,7 +6,7 @@ import {
 
 const MorePage = () => (
   <div>
-    <Header title="Track.it" />
+    <Header title="More" />
     <div className={container}>
       <h1>More Page</h1>
     </div>
