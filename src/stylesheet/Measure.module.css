@@ -1,0 +1,80 @@
+.container {
+  display: flex;
+  padding: 10px 20px;
+  background-color: white;
+  margin: 10px 0;
+}
+
+.measureImage {
+  width: 120px;
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.measureInfo {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 5px 20px;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.measureTitle {
+  font-weight: bold;
+  font-size: 22px;
+  text-transform: capitalize;
+}
+
+.infoContainer {
+  display: flex;
+  align-items: center;
+}
+
+.ytbLink {
+  height: 37px;
+}
+
+.ytbLogoImage {
+  width: 50px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.unitContainer {
+  text-transform: capitalize;
+  font-size: 20px;
+}
+
+.unitContainer span {
+  font-weight: bold;
+  color: grey;
+}
+
+.actions {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: space-around;
+  bottom: 0;
+  right: 0;
+}
+
+.actions > span {
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 25px;
+  height: 25px;
+}
+
+.edit {
+  background-image: url(../assets/images/edit.png);
+}
+
+.trash {
+  background-image: url(../assets/images/trash.png);
+}

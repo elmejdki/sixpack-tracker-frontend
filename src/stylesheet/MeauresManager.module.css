@@ -1,0 +1,19 @@
+.plusSign {
+  display: block;
+  margin: 0 auto;
+  margin-top: 50px;
+  border-radius: 50%;
+  background-color: #41b5e8;
+  padding: 30px;
+  border: 15px solid white;
+  outline: none;
+}
+
+.plusSign:focus {
+  background-color: #313944;
+}
+
+.plusSign img {
+  width: 120px;
+  height: 120px;
+}

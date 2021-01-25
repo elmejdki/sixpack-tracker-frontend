@@ -1,9 +1,12 @@
 .container {
   background-color: #f3f4f6;
   min-height: calc(100vh - 116px);
-  padding: 20px 0;
 }
 
 .fullHeight {
   height: 100vh;
+}
+
+.pageBottomPadding {
+  padding-bottom: 120px;
 }
