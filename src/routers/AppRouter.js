@@ -2,8 +2,9 @@ import React from 'react';
 import { createBrowserHistory } from 'history';
 import { Router, Route, Switch } from 'react-router-dom';
 import ConnectedPublicRoute from './PublicRoute';
+// eslint-disable-next-line import/no-cycle
 import ConnectedPrivateRoute from './PrivateRoute';
-import MeasurePage from '../components/MeasurePage';
+import MeasurementPage from '../components/MeasurementPage';
 import LoginPage from '../components/LoginPage';
 import SignUpPage from '../components/SignUpPage';
 import MorePage from '../components/MorePage';
@@ -20,7 +21,7 @@ const AppRouter = () => (
       <Switch>
         <ConnectedPublicRoute path="/" exact component={LoginPage} />
         <ConnectedPublicRoute path="/signup" component={SignUpPage} />
-        <ConnectedPrivateRoute path="/measure" component={MeasurePage} />
+        <ConnectedPrivateRoute path="/measure" component={MeasurementPage} />
         <ConnectedPrivateRoute path="/track" component={TrackPage} />
         <ConnectedPrivateRoute path="/progress" component={ProgressPage} />
         <ConnectedPrivateRoute path="/more" component={MorePage} />

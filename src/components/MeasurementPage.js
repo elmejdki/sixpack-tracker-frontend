@@ -7,12 +7,12 @@ import {
   reversedTriangle,
   buttonBackground,
   button,
-} from '../stylesheet/MeasurePage.module.css';
+} from '../stylesheet/MeasurementPage.module.css';
 import {
   container,
 } from '../stylesheet/CommonPage.module.css';
 
-const MeasurePage = () => (
+const MeasurementPage = () => (
   <div>
     <Header title="Add Measurement" />
     <div className={`${container} ${measureContainer}`}>
@@ -36,4 +36,4 @@ const MeasurePage = () => (
   </div>
 );
 
-export default MeasurePage;
+export default MeasurementPage;
