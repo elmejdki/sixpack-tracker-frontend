@@ -7,6 +7,7 @@ import { login, logout } from './actions/auth';
 import { startSetMeasurements } from './actions/measurements';
 import Loader from './components/Loader';
 import './index.css';
+import { startSetUserData } from './actions/user_data';
 import { fullHeight } from './stylesheet/CommonPage.module.css';
 
 const store = configureStore();
@@ -33,7 +34,8 @@ const token = localStorage.getItem('token');
 
 if (token) {
   store.dispatch(login(token));
-  store.dispatch(startSetMeasurements())
+  store.dispatch(startSetUserData())
+    .then(() => store.dispatch(startSetMeasurements()))
     .then(data => {
       if (!data.error) {
         renderApp();
