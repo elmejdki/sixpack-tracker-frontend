@@ -12,8 +12,14 @@ import {
 import userImage from '../assets/images/user-image.png';
 import crunchesMove from '../assets/images/crunchesMove.png';
 
-const ImageUploader = ({ fileRef, rounded, profilePic }) => {
-  const image = profilePic ? userImage : crunchesMove;
+const ImageUploader = ({
+  fileRef, rounded, profilePic, updateImage,
+}) => {
+  let image = updateImage ? `http://localhost:3000${updateImage}` : '';
+
+  if (!image) {
+    image = profilePic ? userImage : crunchesMove;
+  }
 
   const [imageHolder, setImageHolder] = useState(image);
 
@@ -74,11 +80,13 @@ ImageUploader.propTypes = {
   fileRef: PropTypes.objectOf(PropTypes.any).isRequired,
   rounded: PropTypes.bool,
   profilePic: PropTypes.bool,
+  updateImage: PropTypes.string,
 };
 
 ImageUploader.defaultProps = {
   rounded: false,
   profilePic: false,
+  updateImage: '',
 };
 
 export default ImageUploader;

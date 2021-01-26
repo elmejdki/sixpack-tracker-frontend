@@ -129,3 +129,6 @@ export const startRemoveMeasure = id => async (dispatch, getState) => {
     };
   }
 };
+
+export const startEditMeasure = () => {
+};

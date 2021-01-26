@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { startRemoveMeasure } from '../actions/measures';
 import youtubeLogo from '../assets/images/youtube-logo.png';
 import {
@@ -19,8 +20,14 @@ import {
 const Measure = ({
   id, title, image, video, unit, startRemoveMeasure,
 }) => {
+  const history = useHistory();
+
   const handleRemove = () => {
     startRemoveMeasure(id);
+  };
+
+  const handleEditAction = () => {
+    history.push(`/measures/edit/${id}`);
   };
 
   return (
@@ -55,6 +62,7 @@ const Measure = ({
         <div className={actions}>
           <button
             type="button"
+            onClick={handleEditAction}
           >
             <span className={edit} />
           </button>

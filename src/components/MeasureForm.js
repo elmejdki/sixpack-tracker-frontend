@@ -8,12 +8,19 @@ import {
   submitSignup,
 } from '../stylesheet/Form.module.css';
 
-const MeasureForm = ({ onSubmit }) => {
+const MeasureForm = ({
+  onSubmit,
+  update,
+  title: propTitle,
+  image: propImage,
+  video: propVideo,
+  unit: propUnit,
+}) => {
   const fileRef = createRef();
 
-  const [title, setTitle] = useState('');
-  const [video, setVideo] = useState('');
-  const [unit, setUnit] = useState('Reps');
+  const [title, setTitle] = useState(propTitle);
+  const [video, setVideo] = useState(propVideo);
+  const [unit, setUnit] = useState(propUnit);
   const [errors, setErrors] = useState({
     title: '',
     video: '',
@@ -120,6 +127,7 @@ const MeasureForm = ({ onSubmit }) => {
     >
       <ImageUploader
         fileRef={fileRef}
+        updateImage={propImage}
       />
       <TextInput
         placeholder="Title"
@@ -146,7 +154,9 @@ const MeasureForm = ({ onSubmit }) => {
         type="submit"
         className={`${submitButton} ${submitSignup}`}
       >
-        Add
+        {
+          (update && 'Update') || 'Add'
+        }
       </button>
     </form>
   );
@@ -154,6 +164,19 @@ const MeasureForm = ({ onSubmit }) => {
 
 MeasureForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  update: PropTypes.bool,
+  title: PropTypes.string,
+  image: PropTypes.string,
+  video: PropTypes.string,
+  unit: PropTypes.string,
+};
+
+MeasureForm.defaultProps = {
+  update: false,
+  title: '',
+  image: '',
+  video: '',
+  unit: '',
 };
 
 export default MeasureForm;
