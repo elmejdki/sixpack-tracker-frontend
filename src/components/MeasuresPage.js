@@ -1,29 +1,42 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Header from './Header';
 import Measure from './Measure';
 import plus from '../assets/images/plus.png';
 import { container, pageBottomPadding } from '../stylesheet/CommonPage.module.css';
 import {
   plusSign,
+  tinyMessage,
 } from '../stylesheet/MeasuresPage.module.css';
 
-const MeasuresPage = () => (
+const MeasuresPage = ({ measures }) => (
   <div>
     <Header title="Manage Measures" />
     <div className={`${container} ${pageBottomPadding}`}>
-      <Measure
-        title="Crunches"
-        image="https://www.verywellfit.com/thmb/t2itdr6ohruDQHsv-KPtKxpaKaI=/1333x1000/smart/filters:no_upscale()/Verywell-1-2696610-AbdominalCrunch01-1853copy-599463c4d088c00013e2cad9.gif"
-        video="https://www.youtube.com/watch?v=5ER5Of4MOPI"
-        unit="reps"
-      />
-      <Measure
-        title="Crunches"
-        image="https://www.verywellfit.com/thmb/t2itdr6ohruDQHsv-KPtKxpaKaI=/1333x1000/smart/filters:no_upscale()/Verywell-1-2696610-AbdominalCrunch01-1853copy-599463c4d088c00013e2cad9.gif"
-        video="https://www.youtube.com/watch?v=5ER5Of4MOPI"
-        unit="reps"
-      />
+      {
+        measures.length === 0 && (
+          <p
+            className={tinyMessage}
+          >
+            Please add some measures by clicking the plus button below.
+          </p>
+        )
+      }
+      {
+        measures.map(({
+          id, title, image, video, unit,
+        }) => (
+          <Measure
+            key={id}
+            title={title}
+            image={image}
+            video={video}
+            unit={unit}
+          />
+        ))
+      }
       <Link
         to="/measures/create"
         className={plusSign}
@@ -37,4 +50,12 @@ const MeasuresPage = () => (
   </div>
 );
 
-export default MeasuresPage;
+MeasuresPage.propTypes = {
+  measures: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+const mapStateToProps = ({ measures }) => ({
+  measures,
+});
+
+export default connect(mapStateToProps)(MeasuresPage);

@@ -22,3 +22,11 @@
   width: 40px;
   height: 40px;
 }
+
+.tinyMessage {
+  color: grey;
+  font-weight: bold;
+  padding: 20px 60px;
+  font-size: 20px;
+  text-align: center;
+}
