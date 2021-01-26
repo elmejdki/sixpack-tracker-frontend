@@ -24,8 +24,8 @@ import logo from '../assets/images/logo.png';
 const LoginPage = ({ startLogIn }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('Shouldn\'t be empty');
-  const [passwordError, setPasswordError] = useState('Shouldn\'t be empty');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   const [loading, setLoading] = useState(false);
 
@@ -56,14 +56,19 @@ const LoginPage = ({ startLogIn }) => {
   const handleSubmit = event => {
     event.preventDefault();
 
-    if (!emailError && !passwordError) {
-      setLoading(true);
+    if (email && password) {
+      if (!emailError && !passwordError) {
+        setLoading(true);
 
-      startLogIn(email, password).then(({ error }) => {
-        if (error) {
-          setLoading(false);
-        }
-      });
+        startLogIn(email, password).then(({ error }) => {
+          if (error) {
+            setLoading(false);
+          }
+        });
+      }
+    } else {
+      setEmailError(email ? '' : 'Shouldn\'t be empty');
+      setPasswordError(password ? '' : 'Shouldn\'t be empty');
     }
   };
 

@@ -28,10 +28,10 @@ const SignUpPage = ({ startSignUp }) => {
   const [confirmation, setConfirmation] = useState('');
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({
-    username: 'Shouldn\'t be empty',
-    email: 'Shouldn\'t be empty',
-    password: 'Shouldn\'t be empty',
-    password_confirmation: 'Shouldn\'t be empty',
+    username: '',
+    email: '',
+    password: '',
+    password_confirmation: '',
   });
 
   const handleUsernameChange = e => {
@@ -145,21 +145,30 @@ const SignUpPage = ({ startSignUp }) => {
     e.preventDefault();
     const imageFile = fileRef.current.files[0];
 
-    const {
-      username: usernameError,
-      email: emailError,
-      password_confirmation: confirmationError,
-      password: passwordError,
-    } = errors;
+    if (username && email && password && confirmation) {
+      const {
+        username: usernameError,
+        email: emailError,
+        password: passwordError,
+        password_confirmation: confirmationError,
+      } = errors;
 
-    if (!usernameError && !passwordError && !emailError && !confirmationError) {
-      setLoading(true);
-      startSignUp(
-        imageFile, username, email, password, confirmation,
-      ).then(({ error }) => {
-        if (error) {
-          setLoading(false);
-        }
+      if (!usernameError && !passwordError && !emailError && !confirmationError) {
+        setLoading(true);
+        startSignUp(
+          imageFile, username, email, password, confirmation,
+        ).then(({ error }) => {
+          if (error) {
+            setLoading(false);
+          }
+        });
+      }
+    } else {
+      setErrors({
+        username: username ? '' : 'Shouldn\'t be empty',
+        email: email ? '' : 'Shouldn\'t be empty',
+        password: password ? '' : 'Shouldn\'t be empty',
+        password_confirmation: confirmation ? '' : 'Shouldn\'t be empty',
       });
     }
   };
@@ -181,6 +190,7 @@ const SignUpPage = ({ startSignUp }) => {
               <ImageUploader
                 fileRef={fileRef}
                 rounded
+                profilePic
               />
               <TextInput
                 placeholder="Username"
