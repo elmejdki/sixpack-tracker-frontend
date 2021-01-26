@@ -3,6 +3,7 @@ import { createBrowserHistory } from 'history';
 import { Router, Route, Switch } from 'react-router-dom';
 import ConnectedPublicRoute from './PublicRoute';
 import ConnectedPrivateRoute from './PrivateRoute';
+import ConnectedRoleRoute from './RoleRoute';
 import MeasurementPage from '../components/MeasurementPage';
 import LoginPage from '../components/LoginPage';
 import SignUpPage from '../components/SignUpPage';
@@ -26,15 +27,9 @@ const AppRouter = () => (
         <ConnectedPrivateRoute path="/track" component={TrackPage} />
         <ConnectedPrivateRoute path="/progress" component={ProgressPage} />
         <ConnectedPrivateRoute path="/more" component={MorePage} />
-        {
-          true && (
-            <>
-              <ConnectedPrivateRoute path="/measures" exact component={MeasuresPage} />
-              <ConnectedPrivateRoute path="/measures/create" component={AddMeasurePage} />
-              <ConnectedPrivateRoute path="/measures/edit/:id" component={EditMeasurePage} />
-            </>
-          )
-        }
+        <ConnectedRoleRoute path="/measures" exact component={MeasuresPage} />
+        <ConnectedRoleRoute path="/measures/create" component={AddMeasurePage} />
+        <ConnectedRoleRoute path="/measures/edit/:id" component={EditMeasurePage} />
         <Route component={NotFoundPage} />
       </Switch>
     </div>
