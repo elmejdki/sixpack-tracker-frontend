@@ -9,10 +9,13 @@ import {
   inputGroup,
   round,
 } from '../stylesheet/Form.module.css';
-import image from '../assets/images/user-image.png';
+import userImage from '../assets/images/user-image.png';
+import crunchesMove from '../assets/images/crunchesMove.png';
 
-const ImageUploader = ({ fileRef, rounded }) => {
-  const [userImage, setUserImage] = useState(image);
+const ImageUploader = ({ fileRef, rounded, profilePic }) => {
+  const image = profilePic ? userImage : crunchesMove;
+
+  const [imageHolder, setImageHolder] = useState(image);
 
   const handleButtonClick = e => {
     e.preventDefault();
@@ -24,7 +27,7 @@ const ImageUploader = ({ fileRef, rounded }) => {
       const reader = new FileReader();
 
       reader.onload = e => {
-        setUserImage(e.target.result);
+        setImageHolder(e.target.result);
       };
 
       reader.readAsDataURL(fileRef.current.files[0]);
@@ -46,7 +49,7 @@ const ImageUploader = ({ fileRef, rounded }) => {
           >
             <img
               className={`${imageInput} ${rounded && round}`}
-              src={userImage}
+              src={imageHolder}
               alt="new user pic"
             />
           </button>
@@ -57,7 +60,7 @@ const ImageUploader = ({ fileRef, rounded }) => {
             onInput={fileSelectHandler}
           />
           {
-            userImage === image && (
+            imageHolder === image && (
               <p className={fileTitle}>Select Image</p>
             )
           }
@@ -70,10 +73,12 @@ const ImageUploader = ({ fileRef, rounded }) => {
 ImageUploader.propTypes = {
   fileRef: PropTypes.objectOf(PropTypes.any).isRequired,
   rounded: PropTypes.bool,
+  profilePic: PropTypes.bool,
 };
 
 ImageUploader.defaultProps = {
   rounded: false,
+  profilePic: false,
 };
 
 export default ImageUploader;

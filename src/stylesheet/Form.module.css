@@ -127,3 +127,7 @@
 .round {
   border-radius: 50%;
 }
+
+.mNone {
+  margin: 0;
+}
