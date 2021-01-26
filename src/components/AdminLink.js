@@ -1,7 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-// eslint-disable-next-line import/no-cycle
-import { history } from '../routers/AppRouter';
+import { Link, useHistory } from 'react-router-dom';
 import editMeasure from '../assets/images/edit-measures.png';
 import {
   link,
@@ -11,6 +9,7 @@ import {
 } from '../stylesheet/AdminLink.module.css';
 
 const AdminLink = () => {
+  const history = useHistory();
   const linkClassName = history.location.pathname
     === '/measures' ? activeLink : inActiveLink;
 

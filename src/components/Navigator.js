@@ -2,7 +2,6 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-// eslint-disable-next-line import/no-cycle
 import AdminLink from './AdminLink';
 import {
   link, links, linkImage, linkTitle, activeLink,
