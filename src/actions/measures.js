@@ -97,3 +97,35 @@ export const startAddMeasure = ({
     };
   }
 };
+
+export const startRemoveMeasure = id => async (dispatch, getState) => {
+  try {
+    const { auth: { token } } = getState();
+
+    const response = await fetch(
+      `http://localhost:3000/measures/${id}`,
+      {
+        headers: new Headers({
+          Authorization: token,
+        }),
+        method: 'DELETE',
+      },
+    );
+
+    const returnedId = await response.json();
+
+    if (response.status !== 200) {
+      // TODO: handle errors with an errors reducer
+      return {
+        error: returnedId.message,
+      };
+    }
+
+    return dispatch(removeMeasure(returnedId.id));
+  } catch (err) {
+    // TODO: handle errors with an errors reducer
+    return {
+      error: err.message,
+    };
+  }
+};

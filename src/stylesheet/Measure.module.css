@@ -61,7 +61,13 @@
   right: 10px;
 }
 
-.actions > span {
+.actions > button {
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.actions > button > span {
   display: block;
   background-position: center;
   background-repeat: no-repeat;
