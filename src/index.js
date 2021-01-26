@@ -5,6 +5,7 @@ import AppRouter, { history } from './routers/AppRouter';
 import configureStore from './store/configureStore';
 import { login, logout } from './actions/auth';
 import { startSetMeasurements } from './actions/measurements';
+import { startSetMeasures } from './actions/measures';
 import Loader from './components/Loader';
 import './index.css';
 import { startSetUserData } from './actions/user_data';
@@ -35,6 +36,7 @@ const token = localStorage.getItem('token');
 if (token) {
   store.dispatch(login(token));
   store.dispatch(startSetUserData())
+    .then(() => store.dispatch(startSetMeasures()))
     .then(() => store.dispatch(startSetMeasurements()))
     .then(data => {
       if (!data.error) {
