@@ -2,7 +2,6 @@ import React from 'react';
 import { createBrowserHistory } from 'history';
 import { Router, Route, Switch } from 'react-router-dom';
 import ConnectedPublicRoute from './PublicRoute';
-// eslint-disable-next-line import/no-cycle
 import ConnectedPrivateRoute from './PrivateRoute';
 import MeasurementPage from '../components/MeasurementPage';
 import LoginPage from '../components/LoginPage';
@@ -11,7 +10,9 @@ import MorePage from '../components/MorePage';
 import NotFoundPage from '../components/NotFoundPage';
 import ProgressPage from '../components/ProgressPage';
 import TrackPage from '../components/TrackPage';
-import MeasuresManager from '../components/MeasuresManager';
+import MeasuresPage from '../components/MeasuresPage';
+import AddMeasurePage from '../components/AddMeasurePage';
+import EditMeasurePage from '../components/EditMeasurePage';
 
 export const history = createBrowserHistory();
 
@@ -27,7 +28,11 @@ const AppRouter = () => (
         <ConnectedPrivateRoute path="/more" component={MorePage} />
         {
           true && (
-            <ConnectedPrivateRoute path="/measures" component={MeasuresManager} />
+            <>
+              <ConnectedPrivateRoute path="/measures" exact component={MeasuresPage} />
+              <ConnectedPrivateRoute path="/measures/create" component={AddMeasurePage} />
+              <ConnectedPrivateRoute path="/measures/edit/:id" component={EditMeasurePage} />
+            </>
           )
         }
         <Route component={NotFoundPage} />
