@@ -121,6 +121,9 @@
   max-height: 120px;
   object-fit: cover;
   object-position: center;
-  border-radius: 50%;
   border: 0.5px solid rgb(155, 155, 155);
+}
+
+.round {
+  border-radius: 50%;
 }

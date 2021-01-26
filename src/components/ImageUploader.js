@@ -7,10 +7,11 @@ import {
   customFileInput,
   fileTitle,
   inputGroup,
+  round,
 } from '../stylesheet/Form.module.css';
 import image from '../assets/images/user-image.png';
 
-const FileUploader = ({ fileRef }) => {
+const ImageUploader = ({ fileRef, rounded }) => {
   const [userImage, setUserImage] = useState(image);
 
   const handleButtonClick = e => {
@@ -44,7 +45,7 @@ const FileUploader = ({ fileRef }) => {
             onClick={handleButtonClick}
           >
             <img
-              className={imageInput}
+              className={`${imageInput} ${rounded && round}`}
               src={userImage}
               alt="new user pic"
             />
@@ -66,8 +67,13 @@ const FileUploader = ({ fileRef }) => {
   );
 };
 
-FileUploader.propTypes = {
+ImageUploader.propTypes = {
   fileRef: PropTypes.objectOf(PropTypes.any).isRequired,
+  rounded: PropTypes.bool,
 };
 
-export default FileUploader;
+ImageUploader.defaultProps = {
+  rounded: false,
+};
+
+export default ImageUploader;

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { startSignUp } from '../actions/auth';
 import Loader from './Loader';
-import FileUploader from './FileUploader';
+import ImageUploader from './ImageUploader';
 import TextInput from './TextInput';
 import PasswordInput from './PasswordInput';
 import {
@@ -178,8 +178,9 @@ const SignUpPage = ({ startSignUp }) => {
               onSubmit={handleSubmit}
             >
               <h1 className={`${headline} ${noMargin}`}>Sign Up</h1>
-              <FileUploader
+              <ImageUploader
                 fileRef={fileRef}
+                rounded
               />
               <TextInput
                 placeholder="Username"
