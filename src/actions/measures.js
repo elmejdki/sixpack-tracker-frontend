@@ -52,3 +52,48 @@ export const startSetMeasures = () => async (dispatch, getState) => {
     };
   }
 };
+
+export const startAddMeasure = ({
+  image, video, unit, title,
+}) => async (dispatch, getState) => {
+  try {
+    const { auth: { token } } = getState();
+
+    const formData = new FormData();
+
+    if (image) {
+      formData.append('image', image);
+    }
+
+    formData.append('title', title);
+    formData.append('video', video);
+    formData.append('unit', unit);
+
+    const response = await fetch(
+      'http://localhost:3000/measures',
+      {
+        headers: new Headers({
+          Authorization: token,
+        }),
+        method: 'POST',
+        body: formData,
+      },
+    );
+
+    const returnedMeasure = await response.json();
+
+    if (response.status !== 201) {
+      // TODO: handle errors with an errors reducer
+      return {
+        error: returnedMeasure.message,
+      };
+    }
+
+    return dispatch(addMeasure(returnedMeasure));
+  } catch (err) {
+    // TODO: handle errors with an errors reducer
+    return {
+      error: err.message,
+    };
+  }
+};

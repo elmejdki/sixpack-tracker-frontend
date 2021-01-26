@@ -31,7 +31,7 @@ const MeasuresPage = ({ measures }) => (
           <Measure
             key={id}
             title={title}
-            image={image}
+            image={`http://localhost:3000${image}`}
             video={video}
             unit={unit}
           />

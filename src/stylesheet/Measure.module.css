@@ -1,13 +1,12 @@
 .container {
   display: flex;
-  padding: 10px 20px;
+  padding: 10px;
   background-color: white;
   margin: 10px 0;
 }
 
 .measureImage {
-  width: 120px;
-  height: 100%;
+  height: 60px;
   object-fit: contain;
   object-position: center;
 }
@@ -16,15 +15,15 @@
   display: flex;
   flex-direction: column;
   position: relative;
-  padding: 5px 20px;
+  padding: 0 20px;
   justify-content: space-between;
   flex-grow: 1;
 }
 
 .measureTitle {
   font-weight: bold;
-  font-size: 20px;
-  text-transform: capitalize;
+  font-size: 18px;
+  text-transform: uppercase;
 }
 
 .infoContainer {
@@ -33,18 +32,18 @@
 }
 
 .ytbLink {
-  height: 27px;
+  height: 20px;
 }
 
 .ytbLogoImage {
-  width: 40px;
+  width: 30px;
   object-fit: cover;
   margin-right: 10px;
 }
 
 .unitContainer {
   text-transform: capitalize;
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .unitContainer span {
@@ -56,10 +55,10 @@
   position: absolute;
   display: flex;
   flex-direction: column;
-  height: 100px;
+  height: 100%;
   justify-content: space-around;
   bottom: 0;
-  right: 0;
+  right: 10px;
 }
 
 .actions > span {

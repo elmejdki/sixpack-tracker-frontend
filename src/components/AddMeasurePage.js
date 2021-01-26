@@ -1,7 +1,12 @@
 import React, { createRef, useState } from 'react';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Header from './Header';
+import { startAddMeasure } from '../actions/measures';
 import ImageUploader from './ImageUploader';
 import TextInput from './TextInput';
+import Loader from './Loader';
 import {
   form,
   container as formContainer,
@@ -9,9 +14,10 @@ import {
   submitButton,
   submitSignup,
 } from '../stylesheet/Form.module.css';
-import { container } from '../stylesheet/CommonPage.module.css';
+import { container, fullHeight } from '../stylesheet/CommonPage.module.css';
 
-const AddMeasurePage = () => {
+const AddMeasurePage = ({ startAddMeasure }) => {
+  const history = useHistory();
   const fileRef = createRef();
 
   const [title, setTitle] = useState('');
@@ -22,6 +28,8 @@ const AddMeasurePage = () => {
     video: '',
     unit: '',
   });
+
+  const [loading, setLoading] = useState(false);
 
   const handleTitleChange = event => {
     setTitle(() => {
@@ -100,16 +108,19 @@ const AddMeasurePage = () => {
       } = errors;
 
       if (!titleError && !videoError && !unitError) {
-        console.log(imageFile);
-        console.log('submit is done');
-        // setLoading(true);
-        // startSignUp(
-        //   imageFile, username, email, password, confirmation,
-        // ).then(({ error }) => {
-        //   if (error) {
-        //     setLoading(false);
-        //   }
-        // });
+        setLoading(true);
+        startAddMeasure({
+          image: imageFile,
+          title,
+          video,
+          unit,
+        }).then(({ error }) => {
+          if (error) {
+            setLoading(false);
+          } else {
+            history.push('/measures');
+          }
+        });
       }
     } else {
       setErrors({
@@ -121,49 +132,65 @@ const AddMeasurePage = () => {
   };
 
   return (
-    <div>
-      <Header title="Add Measure" back />
-      <div className={`${container}`}>
-        <div className={`${formContainer} ${mNone}`}>
-          <form
-            className={form}
-            onSubmit={handleSubmit}
-          >
-            <ImageUploader
-              fileRef={fileRef}
-            />
-            <TextInput
-              placeholder="Title"
-              type="text"
-              text={title}
-              error={errors.title}
-              handleTextChange={handleTitleChange}
-            />
-            <TextInput
-              placeholder="Video URL"
-              type="text"
-              text={video}
-              error={errors.video}
-              handleTextChange={handleVideoChange}
-            />
-            <TextInput
-              placeholder="Unit(Reps/Sec)"
-              type="text"
-              text={unit}
-              error={errors.unit}
-              handleTextChange={handleUnitChange}
-            />
-            <button
-              type="submit"
-              className={`${submitButton} ${submitSignup}`}
-            >
-              Add
-            </button>
-          </form>
-        </div>
-      </div>
-    </div>
+    <>
+      {
+        loading ? (
+          <Loader height={fullHeight} />
+        ) : (
+          <div>
+            <Header title="Add Measure" back />
+            <div className={`${container}`}>
+              <div className={`${formContainer} ${mNone}`}>
+                <form
+                  className={form}
+                  onSubmit={handleSubmit}
+                >
+                  <ImageUploader
+                    fileRef={fileRef}
+                  />
+                  <TextInput
+                    placeholder="Title"
+                    type="text"
+                    text={title}
+                    error={errors.title}
+                    handleTextChange={handleTitleChange}
+                  />
+                  <TextInput
+                    placeholder="Video URL"
+                    type="text"
+                    text={video}
+                    error={errors.video}
+                    handleTextChange={handleVideoChange}
+                  />
+                  <TextInput
+                    placeholder="Unit(Reps/Sec)"
+                    type="text"
+                    text={unit}
+                    error={errors.unit}
+                    handleTextChange={handleUnitChange}
+                  />
+                  <button
+                    type="submit"
+                    className={`${submitButton} ${submitSignup}`}
+                  >
+                    Add
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        )
+      }
+    </>
   );
 };
 
-export default AddMeasurePage;
+AddMeasurePage.propTypes = {
+  startAddMeasure: PropTypes.func.isRequired,
+};
+
+const mapDispatchToProps = {
+  startAddMeasure,
+};
+
+export default connect(null, mapDispatchToProps)(AddMeasurePage);
