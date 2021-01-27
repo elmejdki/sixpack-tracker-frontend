@@ -12,11 +12,14 @@ export const addMeasure = measure => ({
   measure,
 });
 
-export const editMeasure = (id, update) => ({
-  type: EDIT_MEASURE,
-  id,
-  update,
-});
+export const editMeasure = (id, updates) => {
+  console.log(updates);
+  return {
+    type: EDIT_MEASURE,
+    id,
+    updates,
+  };
+};
 
 export const removeMeasure = id => ({
   type: REMOVE_MEASURE,
@@ -130,5 +133,53 @@ export const startRemoveMeasure = id => async (dispatch, getState) => {
   }
 };
 
-export const startEditMeasure = () => {
+export const startEditMeasure = (id, {
+  title,
+  image,
+  video,
+  unit,
+}) => async (dispatch, getState) => {
+  try {
+    const { auth: { token } } = getState();
+
+    const formData = new FormData();
+
+    if (image) {
+      formData.append('image', image);
+    }
+
+    formData.append('title', title);
+    formData.append('video', video);
+    formData.append('unit', unit);
+
+    const response = await fetch(
+      `http://localhost:3000/measures/${id}`,
+      {
+        method: 'PUT',
+        headers: new Headers({
+          Authorization: token,
+        }),
+        body: formData,
+      },
+    );
+
+    const data = await response.json();
+
+    if (response.status !== 200) {
+      return {
+        error: data.message,
+      };
+    }
+
+    return dispatch(editMeasure(id, {
+      title: data.title,
+      image: data.image,
+      video: data.video,
+      unit: data.unit,
+    }));
+  } catch (err) {
+    return {
+      error: err.message,
+    };
+  }
 };

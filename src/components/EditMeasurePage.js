@@ -19,9 +19,9 @@ const EditMeasurePage = ({ startEditMeasure, measure }) => {
 
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = measure => {
+  const handleSubmit = updates => {
     setLoading(true);
-    startEditMeasure(id, measure).then(({ error }) => {
+    startEditMeasure(Number(id), updates).then(({ error }) => {
       if (error) {
         setLoading(false);
       } else {
