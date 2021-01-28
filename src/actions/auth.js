@@ -1,5 +1,6 @@
 import { startSetUserData } from './user_data';
 import { startSetMeasurements } from './measurements';
+import { startSetMeasures } from './measures';
 import { LOGIN, LOGOUT } from '../action_types';
 
 export const login = token => ({
@@ -33,6 +34,7 @@ export const startLogIn = (email, password) => async dispatch => {
       dispatch(login(data.auth_token));
 
       await dispatch(startSetUserData());
+      await dispatch(startSetMeasures());
       await dispatch(startSetMeasurements());
 
       return 'login correctly';
@@ -75,6 +77,7 @@ export const startSignUp = (
       dispatch(login(data.auth_token));
 
       await dispatch(startSetUserData());
+      await dispatch(startSetMeasures());
       await dispatch(startSetMeasurements());
 
       return 'signup correctly';
