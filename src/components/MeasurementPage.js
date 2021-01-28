@@ -1,12 +1,8 @@
-import React from 'react';
 import Header from './Header';
+import Welcome from './Welcome';
 import {
-  measureContainer,
-  welcomeContainer,
-  welcomeText,
-  reversedTriangle,
-  buttonBackground,
-  button,
+  container as measurementContainer,
+  minContent,
 } from '../stylesheet/MeasurementPage.module.css';
 import {
   container,
@@ -15,22 +11,18 @@ import {
 const MeasurementPage = () => (
   <div>
     <Header title="Add Measurement" />
-    <div className={`${container} ${measureContainer}`}>
-      <div>
-        <div className={welcomeContainer}>
-          <p className={welcomeText}>
-            Welcome back let&apos;s add your measurement for today.
-          </p>
-          <span className={reversedTriangle} />
-        </div>
-        <div className={buttonBackground}>
-          <button
-            type="button"
-            className={button}
-          >
-            Go
-          </button>
-        </div>
+    <div className={`${container} ${measurementContainer}`}>
+      {
+        /* false ? (
+          <div>Come back tomorrow</div>
+        ) : ( */
+      }
+      <div
+        className={`${container} ${minContent}`}
+      >
+        <Welcome />
+        <Welcome />
+        <Welcome />
       </div>
     </div>
   </div>
