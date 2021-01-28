@@ -15,7 +15,7 @@ import crunchesMove from '../assets/images/crunchesMove.png';
 const ImageUploader = ({
   fileRef, rounded, profilePic, updateImage,
 }) => {
-  let image = updateImage ? `http://localhost:3000${updateImage}` : '';
+  let image = updateImage;
 
   if (!image) {
     image = profilePic ? userImage : crunchesMove;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   pageWraper,
   welcomeContainer,
@@ -7,7 +8,7 @@ import {
   button,
 } from '../stylesheet/MeasurementPage.module.css';
 
-const Welcome = () => (
+const Welcome = ({ handleSlideToRight }) => (
   <div
     className={pageWraper}
   >
@@ -21,11 +22,16 @@ const Welcome = () => (
       <button
         type="button"
         className={button}
+        onClick={handleSlideToRight}
       >
         Go
       </button>
     </div>
   </div>
 );
+
+Welcome.propTypes = {
+  handleSlideToRight: PropTypes.func.isRequired,
+};
 
 export default Welcome;

@@ -7,6 +7,7 @@
 
 .measureImage {
   height: 60px;
+  width: 110px;
   object-fit: contain;
   object-position: center;
 }

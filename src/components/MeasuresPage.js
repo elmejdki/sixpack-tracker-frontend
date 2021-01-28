@@ -32,7 +32,7 @@ const MeasuresPage = ({ measures }) => (
             key={id}
             id={id}
             title={title}
-            image={`http://localhost:3000${image}`}
+            image={image}
             video={video}
             unit={unit}
           />

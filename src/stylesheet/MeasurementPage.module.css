@@ -10,7 +10,6 @@
 .pageWraper {
   width: 100vw;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
 }
@@ -22,7 +21,7 @@
   justify-content: center;
   align-items: center;
   width: min-content;
-  transition: 1s left cubic-bezier(0.4, 0, 0.2, 1);
+  transition: 0.7s left cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .welcomeContainer {
