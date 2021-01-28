@@ -1,6 +1,7 @@
 import {
   ADD_MEASURE, EDIT_MEASURE, REMOVE_MEASURE, SET_MEASURES,
 } from '../action_types';
+import { fixMeasureImages } from '../helpers/measures';
 
 export const setMeasures = measures => ({
   type: SET_MEASURES,
@@ -45,7 +46,9 @@ export const startSetMeasures = () => async (dispatch, getState) => {
       };
     }
 
-    return dispatch(setMeasures(measures));
+    const fixedMeasureImages = fixMeasureImages(measures);
+
+    return dispatch(setMeasures(fixedMeasureImages));
   } catch (err) {
     // TODO: Please add an error handler I mean a reducer for it
     return {
@@ -90,7 +93,10 @@ export const startAddMeasure = ({
       };
     }
 
-    return dispatch(addMeasure(returnedMeasure));
+    return dispatch(addMeasure({
+      ...returnedMeasure,
+      image: `http://localhost:3000${returnedMeasure.image}`,
+    }));
   } catch (err) {
     // TODO: handle errors with an errors reducer
     return {
@@ -171,7 +177,7 @@ export const startEditMeasure = (id, {
 
     return dispatch(editMeasure(id, {
       title: data.title,
-      image: data.image,
+      image: `http://localhost:3000${data.image}`,
       video: data.video,
       unit: data.unit,
     }));
