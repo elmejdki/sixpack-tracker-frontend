@@ -9,7 +9,7 @@
   outline: none;
   position: fixed;
   bottom: 80px;
-  right: 10px;
+  right: calc((100vw / 2) - 25px);
   box-shadow: 0 0 17px -8px black;
 }
 
