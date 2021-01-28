@@ -12,14 +12,11 @@ export const addMeasure = measure => ({
   measure,
 });
 
-export const editMeasure = (id, updates) => {
-  console.log(updates);
-  return {
-    type: EDIT_MEASURE,
-    id,
-    updates,
-  };
-};
+export const editMeasure = (id, updates) => ({
+  type: EDIT_MEASURE,
+  id,
+  updates,
+});
 
 export const removeMeasure = id => ({
   type: REMOVE_MEASURE,
@@ -50,6 +47,7 @@ export const startSetMeasures = () => async (dispatch, getState) => {
 
     return dispatch(setMeasures(measures));
   } catch (err) {
+    // TODO: Please add an error handler I mean a reducer for it
     return {
       error: err.message,
     };
