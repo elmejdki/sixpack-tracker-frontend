@@ -1,21 +1,28 @@
 import { createRef, useState } from 'react';
+import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { startRemoveMeasure } from '../actions/measures';
 import ImageUploader from './ImageUploader';
 import TextInput from './TextInput';
 import {
   form,
   submitButton,
   submitSignup,
+  deleteButton,
 } from '../stylesheet/Form.module.css';
 
 const MeasureForm = ({
   onSubmit,
   update,
+  id,
   title: propTitle,
   image: propImage,
   video: propVideo,
   unit: propUnit,
+  startRemoveMeasure,
 }) => {
+  const history = useHistory();
   const fileRef = createRef();
 
   const [title, setTitle] = useState(propTitle);
@@ -120,6 +127,11 @@ const MeasureForm = ({
     }
   };
 
+  const handleDeleteClick = () => {
+    startRemoveMeasure(id);
+    history.goBack();
+  };
+
   return (
     <form
       className={form}
@@ -158,12 +170,25 @@ const MeasureForm = ({
           (update && 'Update') || 'Add'
         }
       </button>
+      {
+        update && (
+          <button
+            type="button"
+            onClick={handleDeleteClick}
+            className={`${submitButton} ${deleteButton}`}
+          >
+            Delete
+          </button>
+        )
+      }
     </form>
   );
 };
 
 MeasureForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
+  startRemoveMeasure: PropTypes.func.isRequired,
+  id: PropTypes.number,
   update: PropTypes.bool,
   title: PropTypes.string,
   image: PropTypes.string,
@@ -172,6 +197,7 @@ MeasureForm.propTypes = {
 };
 
 MeasureForm.defaultProps = {
+  id: null,
   update: false,
   title: '',
   image: '',
@@ -179,4 +205,8 @@ MeasureForm.defaultProps = {
   unit: '',
 };
 
-export default MeasureForm;
+const mapDispatchToProps = {
+  startRemoveMeasure,
+};
+
+export default connect(null, mapDispatchToProps)(MeasureForm);

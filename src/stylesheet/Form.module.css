@@ -131,3 +131,7 @@
 .mNone {
   margin: 0;
 }
+
+.deleteButton {
+  background-color: rgb(255, 12, 12);
+}
