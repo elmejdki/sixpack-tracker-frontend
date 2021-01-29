@@ -42,3 +42,45 @@ export const fixMeasurements = measurements => measurements.map(({
 export const sortMeasurements = measurements => measurements.sort(
   (a, b) => moment(b.created_at).valueOf() - moment(a.created_at).valueOf(),
 );
+
+export const restructureMeasurements = measurements => {
+  const result = [];
+
+  let index = 0;
+
+  let prevDate = measurements[0].created_at;
+
+  let hash = {
+    created_at: prevDate,
+    measurements: [],
+  };
+
+  while (index < measurements.length) {
+    const {
+      id, value, measure, created_at: createdAt,
+    } = measurements[index];
+
+    if (prevDate !== createdAt) {
+      prevDate = createdAt;
+
+      result.push(hash);
+
+      hash = {
+        created_at: prevDate,
+        measurements: [],
+      };
+    }
+
+    hash.measurements.push({
+      id,
+      value,
+      measure: { ...measure },
+    });
+
+    index += 1;
+  }
+
+  result.push(hash);
+
+  return result;
+};
