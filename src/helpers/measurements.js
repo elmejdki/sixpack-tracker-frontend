@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export const getMeasurements = (measures, measurements) => {
   if (measurements.length === measures.length) {
     const hashedMeasures = {};
@@ -25,4 +27,18 @@ export const getMeasurements = (measures, measurements) => {
   return [];
 };
 
-export const name = 'Zakariae';
+export const fixMeasurements = measurements => measurements.map(({
+  id, value, created_at: createdAt, measure,
+}) => ({
+  id,
+  value,
+  created_at: moment(createdAt).format('MMM D YYYY'),
+  measure: {
+    ...measure,
+    image: `http://localhost:3000${measure.image}`,
+  },
+}));
+
+export const sortMeasurements = measurements => measurements.sort(
+  (a, b) => moment(b.created_at).valueOf() - moment(a.created_at).valueOf(),
+);

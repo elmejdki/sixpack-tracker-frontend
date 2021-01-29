@@ -1,3 +1,4 @@
+import { fixMeasurements, sortMeasurements } from '../helpers/measurements';
 import { SET_MEASUREMENTS, ADD_MEASUREMENTS } from '../action_types';
 
 export const setMeasurements = measurements => ({
@@ -33,7 +34,8 @@ export const startSetMeasurements = () => async (dispatch, getState) => {
       };
     }
 
-    return dispatch(setMeasurements(data));
+    const fixedMeasurements = fixMeasurements(data);
+    return dispatch(setMeasurements(fixedMeasurements));
   } catch (err) {
     return {
       // TODO: add later a specific reducer for error handling
@@ -61,13 +63,17 @@ export const startAddMeasurements = measurements => async (dispatch, getState) =
     const data = await response.json();
 
     if (response.status !== 201) {
+      // TODO: add later a specific reducer for error handling
       return {
         error: data.message,
       };
     }
 
-    return dispatch(addMeasurements(data));
+    const sortedMeasurments = sortMeasurements(data);
+    const fixedMeasurements = fixMeasurements(sortedMeasurments);
+    return dispatch(addMeasurements(fixedMeasurements));
   } catch (err) {
+    // TODO: add later a specific reducer for error handling
     return {
       error: err.message,
     };
