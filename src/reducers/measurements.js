@@ -1,13 +1,13 @@
-import { SET_MEASUREMENTS, ADD_MEASUREMENT } from '../action_types';
+import { SET_MEASUREMENTS, ADD_MEASUREMENTS } from '../action_types';
 
 export default (state = [], action) => {
   switch (action.type) {
     case SET_MEASUREMENTS:
       return action.measurements;
-    case ADD_MEASUREMENT:
+    case ADD_MEASUREMENTS:
       return [
+        ...action.measurements,
         ...state,
-        action.measurement,
       ];
     default:
       return state;

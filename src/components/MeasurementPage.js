@@ -5,6 +5,7 @@ import Header from './Header';
 import Welcome from './Welcome';
 import MeasurementForm from './MeasurementForm';
 import SubmitMeasurements from './SubmitMeasurements';
+import { startAddMeasurements } from '../actions/measurements';
 import {
   container as measurementContainer,
   minContent,
@@ -13,7 +14,7 @@ import {
   container,
 } from '../stylesheet/CommonPage.module.css';
 
-const MeasurementPage = ({ measures }) => {
+const MeasurementPage = ({ measures, startAddMeasurements }) => {
   const containerRef = useRef();
   const [index, setIndex] = useState(0);
   const [measurementsList, setMeasurementsList] = useState([]);
@@ -64,7 +65,7 @@ const MeasurementPage = ({ measures }) => {
   };
 
   const handleSubmit = () => {
-    console.log(measurementsList);
+    startAddMeasurements(measurementsList);
   };
 
   return (
@@ -113,10 +114,15 @@ const MeasurementPage = ({ measures }) => {
 
 MeasurementPage.propTypes = {
   measures: PropTypes.arrayOf(PropTypes.object).isRequired,
+  startAddMeasurements: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = ({ measures }) => ({
   measures: measures.sort((measureA, measureB) => measureA.id - measureB.id),
 });
 
-export default connect(mapStateToProps)(MeasurementPage);
+const mapDispatchToProps = {
+  startAddMeasurements,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MeasurementPage);
