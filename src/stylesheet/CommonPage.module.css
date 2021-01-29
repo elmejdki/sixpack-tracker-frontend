@@ -21,3 +21,7 @@
 .overflowY {
   overflow-y: scroll;
 }
+
+.whiteBackground {
+  background-color: white;
+}

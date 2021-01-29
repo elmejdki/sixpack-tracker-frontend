@@ -67,3 +67,20 @@
   background-color: white;
   color: #41b5e8;
 }
+
+.message {
+  font-size: 22px;
+  font-weight: lighter;
+  padding: 20px 40px;
+  text-align: center;
+}
+
+.message > div {
+  padding: 20px 0;
+}
+
+.message > div > a {
+  color: #41b5e8;
+  text-decoration: none;
+  font-weight: bold;
+}
