@@ -18,7 +18,7 @@ const MeasurementForm = ({
   video,
   unit,
   handleSlideToLeft,
-  addMeasurement,
+  handleMeasurement,
   handleSlideToRight,
 }) => {
   const [value, setValue] = useState(0);
@@ -32,7 +32,7 @@ const MeasurementForm = ({
 
   const handleNextClick = () => {
     if (value > 0) {
-      addMeasurement(id, value);
+      handleMeasurement(id, value);
       handleSlideToRight();
     }
   };
@@ -122,7 +122,7 @@ MeasurementForm.propTypes = {
   unit: PropTypes.string.isRequired,
   handleSlideToLeft: PropTypes.func.isRequired,
   handleSlideToRight: PropTypes.func.isRequired,
-  addMeasurement: PropTypes.func.isRequired,
+  handleMeasurement: PropTypes.func.isRequired,
 };
 
 export default MeasurementForm;

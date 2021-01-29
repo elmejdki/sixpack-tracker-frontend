@@ -34,7 +34,7 @@ const MeasurementPage = ({ measures }) => {
     setIndex(prevIndex => prevIndex - 1);
   };
 
-  const addMeasurement = (measureId, value) => {
+  const handleMeasurement = (measureId, value) => {
     const measurement = measurementsList.find(
       measurement => measurement.measure_id === measureId,
     );
@@ -47,6 +47,19 @@ const MeasurementPage = ({ measures }) => {
           value,
         },
       ]);
+    } else {
+      setMeasurementsList(prevMeasurements => prevMeasurements.map(
+        prevMeasurement => {
+          if (prevMeasurement.measure_id === measurement.measure_id) {
+            return {
+              ...measurement,
+              value,
+            };
+          }
+
+          return prevMeasurement;
+        },
+      ));
     }
   };
 
@@ -83,7 +96,7 @@ const MeasurementPage = ({ measures }) => {
                 unit={unit}
                 handleSlideToLeft={handleSlideToLeft}
                 handleSlideToRight={handleSlideToRight}
-                addMeasurement={addMeasurement}
+                handleMeasurement={handleMeasurement}
               />
             ))
           }
