@@ -88,7 +88,6 @@ const MeasurementPage = ({ measures, startAddMeasurements, lastMeasurement }) =>
   return (
     <div>
       <Header title="Add Measurement" />
-
       {
         loading ? (
           <Loader height={fullHeight} />

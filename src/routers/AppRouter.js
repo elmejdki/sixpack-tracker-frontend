@@ -14,6 +14,7 @@ import TrackPage from '../components/TrackPage';
 import MeasuresPage from '../components/MeasuresPage';
 import AddMeasurePage from '../components/AddMeasurePage';
 import EditMeasurePage from '../components/EditMeasurePage';
+import ScorePage from '../components/ScorePage';
 
 export const history = createBrowserHistory();
 
@@ -24,7 +25,8 @@ const AppRouter = () => (
         <ConnectedPublicRoute path="/" exact component={LoginPage} />
         <ConnectedPublicRoute path="/signup" component={SignUpPage} />
         <ConnectedPrivateRoute path="/measurement" component={MeasurementPage} />
-        <ConnectedPrivateRoute path="/track" component={TrackPage} />
+        <ConnectedPrivateRoute path="/track" exact component={TrackPage} />
+        <ConnectedPrivateRoute path="/track/:date" component={ScorePage} />
         <ConnectedPrivateRoute path="/progress" component={ProgressPage} />
         <ConnectedPrivateRoute path="/more" component={MorePage} />
         <ConnectedRoleRoute path="/measures" exact component={MeasuresPage} />
