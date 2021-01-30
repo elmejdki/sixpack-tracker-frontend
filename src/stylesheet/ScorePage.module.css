@@ -1,0 +1,99 @@
+.headline {
+  background-color: white;
+}
+
+.headlineControl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 0;
+  position: relative;
+  color: #4d565f;
+}
+
+.dateHolder {
+  font-size: 18px;
+  text-transform: lowercase;
+}
+
+.headlineControl a {
+  position: absolute;
+  height: 20px;
+}
+
+.headlineControl a:nth-child(1) {
+  left: 20px;
+}
+
+.headlineControl a:nth-child(2) {
+  right: 20px;
+}
+
+.headlineControl a img {
+  cursor: pointer;
+  height: 20px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-bottom: 10px;
+}
+
+.scoreCircle {
+  position: relative;
+  width: 108px;
+  height: 108px;
+  margin: 10px;
+}
+
+.scoreCircle svg {
+  width: 108px;
+  height: 108px;
+  transform: rotate(-90deg);
+}
+
+.scoreCircle svg circle {
+  fill: none;
+  stroke-width: 6px;
+  stroke: #000;
+  transform: translate(5px, 5px);
+  stroke-dasharray: 314;
+  stroke-dashoffset: 314;
+}
+
+.scoreCircle svg circle:nth-child(1) {
+  stroke-dashoffset: 0;
+  stroke: #f3f3f3;
+}
+
+.percent {
+  position: absolute;
+  width: 108px;
+  font-size: 12px;
+  text-align: center;
+  top: calc(108px / 2 - (49px / 2));
+  left: 0;
+  color: rgb(110, 122, 122);
+}
+
+.percent span {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.score > div:last-child {
+  color: #4d565f;
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+.measurementsContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding-bottom: 100px;
+}
