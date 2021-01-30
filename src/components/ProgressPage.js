@@ -6,7 +6,7 @@ import {
 
 const ProgressPage = () => (
   <div>
-    <Header title="Progress Report" />
+    <Header title="Progress report" />
     <div className={container}>
       <h1>Progress Page</h1>
     </div>
