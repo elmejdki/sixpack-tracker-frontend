@@ -85,6 +85,29 @@ export const restructureMeasurements = measurements => {
   return result;
 };
 
+export const findMeasurementByDate = (
+  measurements, date, start = 0, end = measurements.length - 1,
+) => {
+  if (start > end) {
+    return false;
+  }
+
+  const mid = Math.floor((end + start) / 2);
+  const measurementDateMilli = moment(measurements[mid].created_at, 'DD MMM YYYY').valueOf();
+  const dateMilli = moment(date, 'DD MMM YYYY').valueOf();
+
+  if (measurementDateMilli < dateMilli) {
+    return findMeasurementByDate(measurements, date, start, mid - 1);
+  }
+
+  if (measurementDateMilli > dateMilli) {
+    return findMeasurementByDate(measurements, date, mid + 1, end);
+  }
+
+  return mid;
+};
+
+// TODO: handle measurements that are counted by secs also.
 export const getScore = measurements => {
   let score = 0;
 
