@@ -1,0 +1,46 @@
+.container {
+  background-color: white;
+  padding: 10px;
+  margin: 10px;
+  width: calc(100vw / 2 - 20px);
+  display: flex;
+  flex-direction: column;
+}
+
+.image {
+  width: 100%;
+  height: 80px;
+  object-fit: cover;
+  object-position: center;
+  margin-bottom: 10px;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  color: #4d565f;
+}
+
+.title {
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.valueText {
+  font-size: 30px;
+  font-weight: bold;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.valueText span {
+  font-weight: lighter;
+  margin-left: 5px;
+  font-size: 12px;
+  color: grey;
+  text-transform: lowercase;
+}
