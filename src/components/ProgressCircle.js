@@ -5,28 +5,42 @@ import {
   container,
   wrapper,
   titleText,
+  fliped,
+  normal,
 } from '../stylesheet/ProgressCircle.module.css';
 
 const ProgressCirlce = ({
   size, title, score, goal, dashoffset,
   circleSize, strokeSize, children,
+  green, red, flip,
 }) => {
   const circleRef = useRef();
 
   useEffect(() => {
-    const review = getScoreReview(score, goal);
     const percent = (score * 100) / goal;
 
     circleRef.current.style.strokeDashoffset = `
       calc(${dashoffset} - (${dashoffset} * ${percent > 100 ? 100 : percent}) / 100)
     `;
 
-    if (review === 'high') {
+    if (green) {
       circleRef.current.style.stroke = '#91e28c';
-    } else if (review === 'medium') {
-      circleRef.current.style.stroke = '#03a9f4';
-    } else {
+    }
+
+    if (red) {
       circleRef.current.style.stroke = '#f32a2b';
+    }
+
+    if (!green && !red) {
+      const review = getScoreReview(score, goal);
+
+      if (review === 'high') {
+        circleRef.current.style.stroke = '#91e28c';
+      } else if (review === 'medium') {
+        circleRef.current.style.stroke = '#03a9f4';
+      } else {
+        circleRef.current.style.stroke = '#f32a2b';
+      }
     }
   }, []);
 
@@ -38,7 +52,7 @@ const ProgressCirlce = ({
         className={`${wrapper} ${circleSize}`}
       >
         <svg
-          className={circleSize}
+          className={`${circleSize} ${flip ? fliped : normal}`}
         >
           <circle className={strokeSize} cx={size} cy={size} r={size} />
           <circle className={strokeSize} ref={circleRef} cx={size} cy={size} r={size} />
@@ -62,6 +76,9 @@ const ProgressCirlce = ({
 
 ProgressCirlce.propTypes = {
   size: PropTypes.string.isRequired,
+  green: PropTypes.bool,
+  red: PropTypes.bool,
+  flip: PropTypes.bool,
   title: PropTypes.string,
   score: PropTypes.number,
   goal: PropTypes.number,
@@ -76,6 +93,9 @@ ProgressCirlce.defaultProps = {
   score: 0,
   goal: 0,
   children: false,
+  green: false,
+  red: false,
+  flip: false,
 };
 
 export default ProgressCirlce;

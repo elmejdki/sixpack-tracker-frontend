@@ -10,8 +10,12 @@
   margin: 10px;
 }
 
-.wrapper svg {
+.normal {
   transform: rotate(-90deg);
+}
+
+.fliped {
+  transform: scaleX(-1) rotate(-90deg);
 }
 
 .wrapper svg circle {
