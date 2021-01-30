@@ -20,7 +20,9 @@ const MeasurementScore = ({ createdAt, score, measurements }) => {
 
   useEffect(() => {
     const percent = (score * 100) / (repsGoal * measurements.length);
-    circleRef.current.style.strokeDashoffset = `calc(95 - (95 * ${percent}) / 100)`;
+    circleRef.current.style.strokeDashoffset = `
+      calc(95 - (95 * ${percent > 100 ? 100 : percent}) / 100)
+    `;
 
     if (review === 'high') {
       circleRef.current.style.stroke = '#91e28c';

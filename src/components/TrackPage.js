@@ -1,20 +1,19 @@
 import React from 'react';
-// import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Header from './Header';
 import MeasurementScore from './MeasurementScore';
 import {
   container,
 } from '../stylesheet/CommonPage.module.css';
-import { measurements } from '../simples/measurements';
-import { restructureMeasurements, getScore } from '../helpers/measurements';
+import { getScore } from '../helpers/measurements';
 
-const TrackPage = () => (
+const TrackPage = ({ measurements }) => (
   <div>
     <Header title="Track.it" />
     <div className={container}>
       {
-        restructureMeasurements(measurements).map(({
+        measurements.map(({
           created_at: createdAt, measurements,
         }) => (
           <MeasurementScore
@@ -29,12 +28,12 @@ const TrackPage = () => (
   </div>
 );
 
-// TrackPage.propTypes = {
-//   measurements: PropTypes.arrayOf(PropTypes.any).isRequired,
-// };
+TrackPage.propTypes = {
+  measurements: PropTypes.arrayOf(PropTypes.any).isRequired,
+};
 
-// const mapStateToProps = ({ measurements }) => ({
-//   measurements,
-// });
+const mapStateToProps = ({ measurements }) => ({
+  measurements,
+});
 
-export default TrackPage;
+export default connect(mapStateToProps)(TrackPage);
