@@ -84,3 +84,27 @@ export const restructureMeasurements = measurements => {
 
   return result;
 };
+
+export const getScore = measurements => {
+  let score = 0;
+
+  measurements.forEach(measurement => {
+    score += measurement.value;
+  });
+
+  return score;
+};
+
+export const getScoreReview = (score, goal) => {
+  if (score > (goal * 2) / 3) {
+    return 'high';
+  }
+
+  if (score > goal / 3) {
+    return 'medium';
+  }
+
+  return 'low';
+};
+
+// console.log(moment().subtract(1, 'week').endOf('week'));

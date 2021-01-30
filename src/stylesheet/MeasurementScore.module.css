@@ -1,0 +1,74 @@
+.circleSVG {
+  position: relative;
+  width: 37px;
+  height: 37px;
+  transform: rotate(-90deg);
+  margin: 10px;
+}
+
+.circleSVG circle {
+  width: 37px;
+  height: 37px;
+  fill: none;
+  stroke-width: 3;
+  stroke: #000;
+  transform: translate(5px, 5px);
+  stroke-dasharray: 95;
+  stroke-dashoffset: 95;
+}
+
+.circleSVG circle:nth-child(1) {
+  stroke-dashoffset: 0;
+  stroke: #f3f3f3;
+}
+
+.container {
+  display: flex;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 10px 0;
+  text-decoration: none;
+  color: black;
+}
+
+.leftContainer {
+  display: flex;
+  align-items: center;
+}
+
+.dateContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.dateText {
+  font-weight: bold;
+  font-size: 18px;
+  color: rgb(75, 75, 75);
+}
+
+.reviewText {
+  font-weight: lighter;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+.scoreText {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin: 10px;
+}
+
+.repsText {
+  font-size: 12px;
+}
+
+.scoreText span:last-child {
+  font-size: 30px;
+  color: rgb(109, 109, 109);
+}
