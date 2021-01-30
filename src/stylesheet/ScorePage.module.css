@@ -36,41 +36,6 @@
   object-position: center;
 }
 
-.score {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding-bottom: 10px;
-}
-
-.scoreCircle {
-  position: relative;
-  width: 108px;
-  height: 108px;
-  margin: 10px;
-}
-
-.scoreCircle svg {
-  width: 108px;
-  height: 108px;
-  transform: rotate(-90deg);
-}
-
-.scoreCircle svg circle {
-  fill: none;
-  stroke-width: 6px;
-  stroke: #000;
-  transform: translate(5px, 5px);
-  stroke-dasharray: 314;
-  stroke-dashoffset: 314;
-}
-
-.scoreCircle svg circle:nth-child(1) {
-  stroke-dashoffset: 0;
-  stroke: #f3f3f3;
-}
-
 .percent {
   position: absolute;
   width: 108px;
@@ -86,14 +51,20 @@
   font-weight: bold;
 }
 
-.score > div:last-child {
-  color: #4d565f;
-  font-weight: lighter;
-  font-size: 14px;
-}
-
 .measurementsContainer {
   display: flex;
   flex-wrap: wrap;
   padding-bottom: 100px;
+}
+
+/* Circle necessary two classes (circleSize and storeSize) */
+.circleSize {
+  width: 108px;
+  height: 108px;
+}
+
+.strokeSize {
+  stroke-dasharray: 314;
+  stroke-dashoffset: 314;
+  stroke-width: 6px;
 }

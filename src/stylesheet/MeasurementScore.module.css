@@ -1,25 +1,12 @@
-.circleSVG {
-  position: relative;
-  width: 37px;
-  height: 37px;
-  transform: rotate(-90deg);
-  margin: 10px;
-}
-
-.circleSVG circle {
-  width: 37px;
-  height: 37px;
-  fill: none;
-  stroke-width: 3;
-  stroke: #000;
-  transform: translate(5px, 5px);
+.strokeSize {
   stroke-dasharray: 95;
   stroke-dashoffset: 95;
+  stroke-width: 3px;
 }
 
-.circleSVG circle:nth-child(1) {
-  stroke-dashoffset: 0;
-  stroke: #f3f3f3;
+.circleSize {
+  width: 37px;
+  height: 37px;
 }
 
 .container {

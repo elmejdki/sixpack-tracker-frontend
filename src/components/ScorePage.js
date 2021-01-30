@@ -1,4 +1,3 @@
-import { useRef, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
@@ -6,17 +5,18 @@ import { Link } from 'react-router-dom';
 import { repsGoal } from '../usefull_vars';
 import Header from './Header';
 import MeasurementDisplay from './MeasurementDisplay';
-import { findMeasurementByDate, getScoreReview, getScore } from '../helpers/measurements';
+import ProgressCircle from './ProgressCircle';
+import { findMeasurementByDate, getScore } from '../helpers/measurements';
 import next from '../assets/images/next.png';
 import prev from '../assets/images/prev.png';
 import {
   headline,
   headlineControl,
   dateHolder,
-  score,
-  scoreCircle,
   percent,
   measurementsContainer,
+  strokeSize,
+  circleSize,
 } from '../stylesheet/ScorePage.module.css';
 import {
   container,
@@ -25,27 +25,9 @@ import {
 const ScorePage = ({
   prevMeasurementDate, currentMeasurement, nextMeasurementDate,
 }) => {
-  const circleRef = useRef();
   const { measurements } = currentMeasurement;
   const goal = repsGoal * measurements.length;
   const mScore = getScore(measurements);
-  const review = getScoreReview(mScore, goal);
-
-  useEffect(() => {
-    const percent = (mScore * 100) / goal;
-
-    circleRef.current.style.strokeDashoffset = `
-      calc(314 - (314 * ${percent > 100 ? 100 : percent}) / 100)
-    `;
-
-    if (review === 'high') {
-      circleRef.current.style.stroke = '#91e28c';
-    } else if (review === 'medium') {
-      circleRef.current.style.stroke = '#03a9f4';
-    } else {
-      circleRef.current.style.stroke = '#f32a2b';
-    }
-  }, []);
 
   return (
     <div>
@@ -88,26 +70,23 @@ const ScorePage = ({
               )
             }
           </div>
-          <div
-            className={score}
+          <ProgressCircle
+            size="50"
+            dashoffset={314}
+            circleSize={circleSize}
+            strokeSize={strokeSize}
+            title="Today Score"
+            score={mScore}
+            goal={goal}
           >
             <div
-              className={scoreCircle}
+              className={percent}
             >
-              <svg>
-                <circle cx="50" cy="50" r="50" />
-                <circle ref={circleRef} cx="50" cy="50" r="50" />
-              </svg>
-              <div
-                className={percent}
-              >
-                <span>{mScore}</span>
-                /
-                {goal}
-              </div>
+              <span>{mScore}</span>
+              /
+              {goal}
             </div>
-            <div>Today Score</div>
-          </div>
+          </ProgressCircle>
         </div>
         <div
           className={measurementsContainer}

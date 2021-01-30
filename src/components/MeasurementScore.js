@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
-import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import ProgressCircle from './ProgressCircle';
 import { getScoreReview } from '../helpers/measurements';
 import { repsGoal } from '../usefull_vars';
 import {
@@ -9,29 +9,15 @@ import {
   dateContainer,
   dateText,
   reviewText,
-  circleSVG,
   repsText,
   scoreText,
+  circleSize,
+  strokeSize,
 } from '../stylesheet/MeasurementScore.module.css';
 
 const MeasurementScore = ({ createdAt, score, measurements }) => {
-  const circleRef = useRef();
-  const review = getScoreReview(score, repsGoal * measurements.length);
-
-  useEffect(() => {
-    const percent = (score * 100) / (repsGoal * measurements.length);
-    circleRef.current.style.strokeDashoffset = `
-      calc(95 - (95 * ${percent > 100 ? 100 : percent}) / 100)
-    `;
-
-    if (review === 'high') {
-      circleRef.current.style.stroke = '#91e28c';
-    } else if (review === 'medium') {
-      circleRef.current.style.stroke = '#03a9f4';
-    } else {
-      circleRef.current.style.stroke = '#f32a2b';
-    }
-  }, []);
+  const goal = repsGoal * measurements.length;
+  const review = getScoreReview(score, goal);
 
   return (
     <Link
@@ -41,12 +27,14 @@ const MeasurementScore = ({ createdAt, score, measurements }) => {
       <div
         className={leftContainer}
       >
-        <svg
-          className={circleSVG}
-        >
-          <circle cx="15" cy="15" r="15" />
-          <circle ref={circleRef} cx="15" cy="15" r="15" />
-        </svg>
+        <ProgressCircle
+          size="15"
+          dashoffset={95}
+          score={score}
+          goal={goal}
+          circleSize={circleSize}
+          strokeSize={strokeSize}
+        />
         <div
           className={dateContainer}
         >
