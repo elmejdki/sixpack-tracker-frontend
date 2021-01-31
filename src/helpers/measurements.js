@@ -130,4 +130,16 @@ export const getScoreReview = (score, goal) => {
   return 'low';
 };
 
+export const getOnlyValueMeasurements = measurements => {
+  const result = [];
+
+  measurements.forEach(measurement => {
+    measurement.measurements.forEach(({ value }) => {
+      result.push({ value });
+    });
+  });
+
+  return result;
+};
+
 // console.log(moment().subtract(1, 'week').endOf('week'));
