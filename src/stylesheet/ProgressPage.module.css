@@ -85,3 +85,23 @@
   font-size: 24px;
   color: #343b42;
 }
+
+.measurementDisplayContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.headline {
+  font-weight: lighter;
+  color: #343b42;
+  font-size: 30px;
+  background-color: white;
+  text-align: center;
+  padding: 5px 0;
+  margin: 10px;
+}
+
+.centerButtons {
+  display: flex;
+  justify-content: center;
+}

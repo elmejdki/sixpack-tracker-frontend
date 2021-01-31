@@ -133,6 +133,7 @@ export const getScoreReview = (score, goal) => {
 export const getProgressPageMeasurements = (measurements, dayGoal) => {
   const onlyValueMeasurements = [];
   const data = [];
+  const totalMeasurements = {};
   let dayReps = 0;
 
   let index = measurements.length - 1;
@@ -143,8 +144,21 @@ export const getProgressPageMeasurements = (measurements, dayGoal) => {
     dayReps = 0;
 
     while (j < msrs.length) {
-      const { value } = msrs[j];
+      const {
+        value,
+        measure,
+      } = msrs[j];
       onlyValueMeasurements.push({ value });
+
+      if (totalMeasurements[measure.id]) {
+        totalMeasurements[measure.id].sum += value;
+      } else {
+        totalMeasurements[measure.id] = {
+          ...measure,
+          sum: value,
+        };
+      }
+
       dayReps += value;
       j += 1;
     }
@@ -182,20 +196,5 @@ export const getProgressPageMeasurements = (measurements, dayGoal) => {
     }
   }
 
-  return { onlyValueMeasurements, data };
+  return { onlyValueMeasurements, data, totalMeasurements };
 };
-
-export const data = [
-  // previous Days
-  {
-    date: 'Jan 20 2020', messing: 4000, reps: 2400,
-  },
-  // last day
-  {
-    date: 'Jan 26 2020', messing: 3490, rep: 2100,
-  },
-  // rest of the days
-  {
-    date: 'X Date', goal: 13490,
-  },
-];

@@ -1,11 +1,14 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import ProgressCircle from './ProgressCircle';
 import ProgressChart from './ProgressChart';
+import MeasurementDisplay from './MeasurementDisplay';
 import { getProgressPageMeasurements, getScore } from '../helpers/measurements';
 import { superGoal, repGoal } from '../usefull_vars';
+import {
+  buttonsContainer,
+} from '../stylesheet/MeasurementForm.module.css';
 import {
   progressContainer,
   circleSize,
@@ -18,6 +21,9 @@ import {
   remainStyle,
   remainText,
   remainRepsText,
+  measurementDisplayContainer,
+  headline,
+  centerButtons,
 } from '../stylesheet/ProgressPage.module.css';
 import {
   container,
@@ -26,7 +32,11 @@ import {
 } from '../stylesheet/CommonPage.module.css';
 
 const ProgressPage = ({
-  onlyValueMeasurements, measuresSize, measurementsSize, chartData,
+  onlyValueMeasurements,
+  measuresSize,
+  measurementsSize,
+  chartData,
+  totalMeasurements,
 }) => {
   const score = getScore(onlyValueMeasurements);
   const longGoal = superGoal(measuresSize);
@@ -100,6 +110,52 @@ const ProgressPage = ({
           data={chartData}
         />
         <div
+          className={headline}
+        >
+          Activity Summary
+        </div>
+        <div
+          className={measurementDisplayContainer}
+        >
+          {
+            totalMeasurements.map(({
+              id, sum, video, image, unit, title,
+            }) => (
+              <MeasurementDisplay
+                key={id}
+                value={sum}
+                measure={{
+                  id,
+                  image,
+                  video,
+                  unit,
+                  title,
+                }}
+              />
+            ))
+          }
+        </div>
+        <div
+          className={centerButtons}
+        >
+          <div
+            className={buttonsContainer}
+          >
+            <button
+              type="button"
+              onClick={() => {}}
+            >
+              Manage
+            </button>
+            <button
+              type="button"
+              onClick={() => {}}
+            >
+              Share
+            </button>
+          </div>
+        </div>
+        <div
           className={extrasSpaceBottom}
         />
       </div>
@@ -112,16 +168,24 @@ ProgressPage.propTypes = {
   measuresSize: PropTypes.number.isRequired,
   measurementsSize: PropTypes.number.isRequired,
   chartData: PropTypes.arrayOf(PropTypes.any).isRequired,
+  totalMeasurements: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 const mapStateToProps = ({ measurements, measures }) => {
-  const { onlyValueMeasurements, data } = getProgressPageMeasurements(
+  const { onlyValueMeasurements, data, totalMeasurements } = getProgressPageMeasurements(
     measurements, repGoal * measures.length,
   );
+
+  const totalMeasurementsArray = [];
+  const keys = Object.keys(totalMeasurements);
+  keys.forEach(key => {
+    totalMeasurementsArray.push(totalMeasurements[key]);
+  });
 
   return {
     measurementsSize: measurements.length,
     onlyValueMeasurements,
+    totalMeasurements: totalMeasurementsArray,
     chartData: data,
     measuresSize: measures.length,
   };
