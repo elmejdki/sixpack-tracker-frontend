@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { repGoal } from '../usefull_vars';
 import {
   pageWraper,
 } from '../stylesheet/MeasurementPage.module.css';
@@ -91,7 +92,7 @@ const MeasurementForm = ({
       <div
         className={moveUnit}
       >
-        {`Unit: ${unit}`}
+        {`Goal: ${repGoal} ${unit}`}
       </div>
       <div
         className={buttonsContainer}

@@ -12,6 +12,10 @@
   height: 100vh;
 }
 
+.extrasSpaceBottom {
+  padding-bottom: 100px;
+}
+
 .pageBottomPadding {
   padding-bottom: 145px;
 }

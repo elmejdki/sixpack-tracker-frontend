@@ -17,6 +17,8 @@ import {
   measurementsContainer,
   strokeSize,
   circleSize,
+  left,
+  right,
 } from '../stylesheet/ScorePage.module.css';
 import {
   container,
@@ -42,7 +44,10 @@ const ScorePage = ({
             {
               prevMeasurementDate
               && (
-                <Link to={prevMeasurementDate}>
+                <Link
+                  to={prevMeasurementDate}
+                  className={left}
+                >
                   <img
                     src={prev}
                     alt="next"
@@ -61,7 +66,10 @@ const ScorePage = ({
             {
               nextMeasurementDate
               && (
-                <Link to={nextMeasurementDate}>
+                <Link
+                  to={nextMeasurementDate}
+                  className={right}
+                >
                   <img
                     src={next}
                     alt="next"

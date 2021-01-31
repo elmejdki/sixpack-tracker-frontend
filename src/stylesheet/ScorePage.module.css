@@ -21,11 +21,11 @@
   height: 20px;
 }
 
-.headlineControl a:nth-child(1) {
+.headlineControl .left {
   left: 20px;
 }
 
-.headlineControl a:nth-child(2) {
+.headlineControl .right {
   right: 20px;
 }
 
