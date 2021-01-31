@@ -3,6 +3,11 @@
   min-height: calc(100vh - 116px);
 }
 
+.removeWhiteSpaceOnTop {
+  height: 1px;
+  margin-bottom: -1px;
+}
+
 .fullHeight {
   height: 100vh;
 }

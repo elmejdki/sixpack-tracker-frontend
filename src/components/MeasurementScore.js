@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ProgressCircle from './ProgressCircle';
 import { getScoreReview } from '../helpers/measurements';
-import { repsGoal } from '../usefull_vars';
+import { repGoal } from '../usefull_vars';
 import {
   container,
   leftContainer,
@@ -16,7 +16,7 @@ import {
 } from '../stylesheet/MeasurementScore.module.css';
 
 const MeasurementScore = ({ createdAt, score, measurements }) => {
-  const goal = repsGoal * measurements.length;
+  const goal = repGoal * measurements.length;
   const review = getScoreReview(score, goal);
 
   return (

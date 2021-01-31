@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-import { repsGoal } from '../usefull_vars';
+import { repGoal } from '../usefull_vars';
 import Header from './Header';
 import MeasurementDisplay from './MeasurementDisplay';
 import ProgressCircle from './ProgressCircle';
@@ -26,7 +26,7 @@ const ScorePage = ({
   prevMeasurementDate, currentMeasurement, nextMeasurementDate,
 }) => {
   const { measurements } = currentMeasurement;
-  const goal = repsGoal * measurements.length;
+  const goal = repGoal * measurements.length;
   const mScore = getScore(measurements);
 
   return (
