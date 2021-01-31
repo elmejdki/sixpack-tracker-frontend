@@ -3,15 +3,15 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from './Header';
 import ProgressCircle from './ProgressCircle';
-import { getOnlyValueMeasurements, getScore } from '../helpers/measurements';
-import { superGoal } from '../usefull_vars';
+import ProgressChart from './ProgressChart';
+import { getProgressPageMeasurements, getScore } from '../helpers/measurements';
+import { superGoal, repGoal } from '../usefull_vars';
 import {
   progressContainer,
   circleSize,
   strokeSize,
   scoreStyle,
   scoreText,
-  // remain Score circle style
   remainContainer,
   remainCircleSize,
   remainStrokeSize,
@@ -22,10 +22,13 @@ import {
 import {
   container,
   removeWhiteSpaceOnTop,
+  extrasSpaceBottom,
 } from '../stylesheet/CommonPage.module.css';
 
-const ProgressPage = ({ onlyValyeMeasurements, measuresSize }) => {
-  const score = getScore(onlyValyeMeasurements);
+const ProgressPage = ({
+  onlyValueMeasurements, measuresSize, measurementsSize, chartData,
+}) => {
+  const score = getScore(onlyValueMeasurements);
   const longGoal = superGoal(measuresSize);
 
   return (
@@ -91,21 +94,37 @@ const ProgressPage = ({ onlyValyeMeasurements, measuresSize }) => {
             More Reps to Do
           </div>
         </div>
-        <h1>Progress Page</h1>
+        <ProgressChart
+          trainedDays={measurementsSize}
+          repsGoal={longGoal}
+          data={chartData}
+        />
+        <div
+          className={extrasSpaceBottom}
+        />
       </div>
     </div>
   );
 };
 
 ProgressPage.propTypes = {
-  onlyValyeMeasurements: PropTypes.arrayOf(PropTypes.object).isRequired,
+  onlyValueMeasurements: PropTypes.arrayOf(PropTypes.object).isRequired,
   measuresSize: PropTypes.number.isRequired,
+  measurementsSize: PropTypes.number.isRequired,
+  chartData: PropTypes.arrayOf(PropTypes.any).isRequired,
 };
 
-const mapStateToProps = ({ measurements, measures }) => ({
-  measurements,
-  onlyValyeMeasurements: getOnlyValueMeasurements(measurements),
-  measuresSize: measures.length,
-});
+const mapStateToProps = ({ measurements, measures }) => {
+  const { onlyValueMeasurements, data } = getProgressPageMeasurements(
+    measurements, repGoal * measures.length,
+  );
+
+  return {
+    measurementsSize: measurements.length,
+    onlyValueMeasurements,
+    chartData: data,
+    measuresSize: measures.length,
+  };
+};
 
 export default connect(mapStateToProps)(ProgressPage);

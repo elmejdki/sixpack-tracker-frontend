@@ -130,16 +130,72 @@ export const getScoreReview = (score, goal) => {
   return 'low';
 };
 
-export const getOnlyValueMeasurements = measurements => {
-  const result = [];
+export const getProgressPageMeasurements = (measurements, dayGoal) => {
+  const onlyValueMeasurements = [];
+  const data = [];
+  let dayReps = 0;
 
-  measurements.forEach(measurement => {
-    measurement.measurements.forEach(({ value }) => {
-      result.push({ value });
-    });
-  });
+  let index = measurements.length - 1;
+  let j = 0;
 
-  return result;
+  while (index >= 0) {
+    const { measurements: msrs } = measurements[index];
+    dayReps = 0;
+
+    while (j < msrs.length) {
+      const { value } = msrs[j];
+      onlyValueMeasurements.push({ value });
+      dayReps += value;
+      j += 1;
+    }
+
+    j = 0;
+
+    if (index < 30) {
+      if (index === 0) {
+        data.push({
+          date: measurements[index].created_at,
+          rep: dayReps > dayGoal ? dayGoal : dayReps,
+          messing: dayReps > dayGoal ? 0 : dayGoal - dayReps,
+        });
+      } else {
+        data.push({
+          date: measurements[index].created_at,
+          reps: dayReps > dayGoal ? dayGoal : dayReps,
+          messing: dayGoal - dayReps,
+        });
+      }
+    }
+
+    index -= 1;
+  }
+
+  if (measurements.length < 30) {
+    let i = 30 - measurements.length;
+
+    while (i > 0) {
+      data.push({
+        date: 'X Date',
+        goal: dayGoal,
+      });
+      i -= 1;
+    }
+  }
+
+  return { onlyValueMeasurements, data };
 };
 
-// console.log(moment().subtract(1, 'week').endOf('week'));
+export const data = [
+  // previous Days
+  {
+    date: 'Jan 20 2020', messing: 4000, reps: 2400,
+  },
+  // last day
+  {
+    date: 'Jan 26 2020', messing: 3490, rep: 2100,
+  },
+  // rest of the days
+  {
+    date: 'X Date', goal: 13490,
+  },
+];
