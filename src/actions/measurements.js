@@ -1,5 +1,6 @@
 import { fixMeasurements, sortMeasurements, restructureMeasurements } from '../helpers/measurements';
 import { SET_MEASUREMENTS, ADD_MEASUREMENTS } from '../action_types';
+import errorHandler from '../helpers/error';
 import { host } from '../usefull_vars';
 
 export const setMeasurements = measurements => ({
@@ -29,20 +30,14 @@ export const startSetMeasurements = () => async (dispatch, getState) => {
     const data = await response.json();
 
     if (response.status !== 200) {
-      // TODO: add later a specific reducer for error handling
-      return {
-        error: data.message,
-      };
+      return errorHandler(dispatch, data.message, true);
     }
 
     const fixedMeasurements = fixMeasurements(data);
     const structuredMeasurements = restructureMeasurements(fixedMeasurements);
     return dispatch(setMeasurements(structuredMeasurements));
   } catch (err) {
-    return {
-      // TODO: add later a specific reducer for error handling
-      error: err.message,
-    };
+    return errorHandler(dispatch, err.message, true);
   }
 };
 
@@ -65,20 +60,16 @@ export const startAddMeasurements = measurements => async (dispatch, getState) =
     const data = await response.json();
 
     if (response.status !== 201) {
-      // TODO: add later a specific reducer for error handling
-      return {
-        error: data.message,
-      };
+      return errorHandler(dispatch, data.message, true);
     }
 
     const sortedMeasurments = sortMeasurements(data);
     const fixedMeasurements = fixMeasurements(sortedMeasurments);
     const structuredMeasurements = restructureMeasurements(fixedMeasurements);
-    return dispatch(addMeasurements(structuredMeasurements));
+    dispatch(addMeasurements(structuredMeasurements));
+
+    return errorHandler(dispatch, 'Measurements where added successfully', false);
   } catch (err) {
-    // TODO: add later a specific reducer for error handling
-    return {
-      error: err.message,
-    };
+    return errorHandler(dispatch, err.message, true);
   }
 };

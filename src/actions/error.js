@@ -1,10 +1,10 @@
 import { SET_ERROR, REMOVE_ERROR } from '../action_types';
 
-export const login = error => ({
+export const setError = error => ({
   type: SET_ERROR,
   error,
 });
 
-export const logout = () => ({
+export const removeError = () => ({
   type: REMOVE_ERROR,
 });

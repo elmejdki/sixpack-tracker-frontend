@@ -2,6 +2,7 @@ import {
   ADD_MEASURE, EDIT_MEASURE, REMOVE_MEASURE, SET_MEASURES,
 } from '../action_types';
 import fixMeasureImages from '../helpers/measures';
+import errorHandler from '../helpers/error';
 import { host } from '../usefull_vars';
 
 export const setMeasures = measures => ({
@@ -40,21 +41,15 @@ export const startSetMeasures = () => async (dispatch, getState) => {
 
     const measures = await response.json();
 
-    // TODO: Please add an error handler I mean a reducer for it
     if (response.status !== 200) {
-      return {
-        error: measures.message,
-      };
+      return errorHandler(dispatch, measures.message, true);
     }
 
     const fixedMeasureImages = fixMeasureImages(measures);
 
     return dispatch(setMeasures(fixedMeasureImages));
   } catch (err) {
-    // TODO: Please add an error handler I mean a reducer for it
-    return {
-      error: err.message,
-    };
+    return errorHandler(dispatch, err.message, true);
   }
 };
 
@@ -88,21 +83,17 @@ export const startAddMeasure = ({
     const returnedMeasure = await response.json();
 
     if (response.status !== 201) {
-      // TODO: handle errors with an errors reducer
-      return {
-        error: returnedMeasure.message,
-      };
+      return errorHandler(dispatch, returnedMeasure.message, true);
     }
 
-    return dispatch(addMeasure({
+    dispatch(addMeasure({
       ...returnedMeasure,
       image: `${host}${returnedMeasure.image}`,
     }));
+
+    return errorHandler(dispatch, 'Measure Added Successfuly', false);
   } catch (err) {
-    // TODO: handle errors with an errors reducer
-    return {
-      error: err.message,
-    };
+    return errorHandler(dispatch, err.message, true);
   }
 };
 
@@ -123,18 +114,14 @@ export const startRemoveMeasure = id => async (dispatch, getState) => {
     const returnedId = await response.json();
 
     if (response.status !== 200) {
-      // TODO: handle errors with an errors reducer
-      return {
-        error: returnedId.message,
-      };
+      return errorHandler(dispatch, returnedId.message, true);
     }
 
-    return dispatch(removeMeasure(returnedId.id));
+    dispatch(removeMeasure(returnedId.id));
+
+    return errorHandler(dispatch, 'Measure was Removed successfuly', false);
   } catch (err) {
-    // TODO: handle errors with an errors reducer
-    return {
-      error: err.message,
-    };
+    return errorHandler(dispatch, err.message, true);
   }
 };
 
@@ -171,20 +158,18 @@ export const startEditMeasure = (id, {
     const data = await response.json();
 
     if (response.status !== 200) {
-      return {
-        error: data.message,
-      };
+      return errorHandler(dispatch, data.message, true);
     }
 
-    return dispatch(editMeasure(id, {
+    dispatch(editMeasure(id, {
       title: data.title,
       image: `${host}${data.image}`,
       video: data.video,
       unit: data.unit,
     }));
+
+    return errorHandler(dispatch, 'Measure Edited successfuly', false);
   } catch (err) {
-    return {
-      error: err.message,
-    };
+    return errorHandler(dispatch, err.message, true);
   }
 };

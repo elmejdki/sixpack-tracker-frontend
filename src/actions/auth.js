@@ -2,6 +2,7 @@ import { startSetUserData } from './user_data';
 import { startSetMeasurements } from './measurements';
 import { startSetMeasures } from './measures';
 import { LOGIN, LOGOUT } from '../action_types';
+import errorHandler from '../helpers/error';
 import { host } from '../usefull_vars';
 
 export const login = token => ({
@@ -38,18 +39,12 @@ export const startLogIn = (email, password) => async dispatch => {
       await dispatch(startSetMeasures());
       await dispatch(startSetMeasurements());
 
-      return 'login correctly';
+      return errorHandler(dispatch, 'login successfuly', false);
     }
 
-    // TODO: dispatch the error in the errors reducer
-    return {
-      error: data.message,
-    };
+    return errorHandler(dispatch, data.message, true);
   } catch (err) {
-    // TODO: dispatch the error in the errors reducer
-    return {
-      error: err.message,
-    };
+    return errorHandler(dispatch, err.message, true);
   }
 };
 
@@ -81,17 +76,11 @@ export const startSignUp = (
       await dispatch(startSetMeasures());
       await dispatch(startSetMeasurements());
 
-      return 'signup correctly';
+      return errorHandler(dispatch, 'signup successfuly', false);
     }
 
-    // TODO: dispatch the error in the errors reducer
-    return {
-      error: data.message,
-    };
+    return errorHandler(dispatch, data.message, true);
   } catch (err) {
-    // TODO: dispatch the error in the errors reducer
-    return {
-      error: err.message,
-    };
+    return errorHandler(dispatch, err.message, true);
   }
 };
