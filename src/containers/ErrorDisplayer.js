@@ -1,28 +1,38 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { removeError } from '../actions/error';
 import {
   float,
   red,
   green,
 } from '../stylesheet/CommonPage.module.css';
 
-const ErrorDisplayer = ({ isError, message }) => (
-  <>
-    {
-      message && (
-        <div
-          className={`${float} ${isError ? red : green}`}
-        >
-          {message}
-        </div>
-      )
-    }
-  </>
-);
+const ErrorDisplayer = ({ isError, message, removeError }) => {
+  const handleRemove = () => {
+    removeError();
+  };
+
+  return (
+    <>
+      {
+        message && (
+          <button
+            type="button"
+            onClick={handleRemove}
+            className={`${float} ${isError ? red : green}`}
+          >
+            {message}
+          </button>
+        )
+      }
+    </>
+  );
+};
 
 ErrorDisplayer.propTypes = {
   isError: PropTypes.bool,
   message: PropTypes.string,
+  removeError: PropTypes.func.isRequired,
 };
 
 ErrorDisplayer.defaultProps = {
@@ -34,4 +44,8 @@ const mapStateToProps = ({ error }) => ({
   ...error,
 });
 
-export default connect(mapStateToProps)(ErrorDisplayer);
+const mapDispatchToProps = {
+  removeError,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ErrorDisplayer);

@@ -45,11 +45,14 @@
   text-align: center;
   color: white;
   font-size: 20px;
-  padding: 5px 10px;
+  padding: 8px 10px;
   width: calc(100vw - 100px);
   left: calc(100vw / 2 - (100vw - 100px) / 2);
   font-weight: lighter;
   z-index: 100;
+  text-transform: capitalize;
+  line-height: 1;
+  border: none;
 }
 
 .red {
@@ -57,5 +60,5 @@
 }
 
 .green {
-  background-color: #69e263;
+  background-color: #44d63c;
 }
