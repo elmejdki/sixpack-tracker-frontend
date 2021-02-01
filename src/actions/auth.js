@@ -2,6 +2,7 @@ import { startSetUserData } from './user_data';
 import { startSetMeasurements } from './measurements';
 import { startSetMeasures } from './measures';
 import { LOGIN, LOGOUT } from '../action_types';
+import { host } from '../usefull_vars';
 
 export const login = token => ({
   type: LOGIN,
@@ -19,7 +20,7 @@ export const startLogIn = (email, password) => async dispatch => {
       password,
     };
 
-    const response = await fetch('http://localhost:3000/auth/login', {
+    const response = await fetch(`${host}/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -65,7 +66,7 @@ export const startSignUp = (
     formData.append('password', password);
     formData.append('password_confirmation', confirmation);
 
-    const response = await fetch('http://localhost:3000/signup', {
+    const response = await fetch(`${host}/signup`, {
       method: 'POST',
       body: formData,
     });

@@ -1,7 +1,8 @@
 import {
   ADD_MEASURE, EDIT_MEASURE, REMOVE_MEASURE, SET_MEASURES,
 } from '../action_types';
-import { fixMeasureImages } from '../helpers/measures';
+import fixMeasureImages from '../helpers/measures';
+import { host } from '../usefull_vars';
 
 export const setMeasures = measures => ({
   type: SET_MEASURES,
@@ -28,7 +29,7 @@ export const startSetMeasures = () => async (dispatch, getState) => {
   try {
     const { auth: { token } } = getState();
     const response = await fetch(
-      'http://localhost:3000/measures',
+      `${host}/measures`,
       {
         headers: new Headers({
           Authorization: token,
@@ -74,7 +75,7 @@ export const startAddMeasure = ({
     formData.append('unit', unit);
 
     const response = await fetch(
-      'http://localhost:3000/measures',
+      `${host}/measures`,
       {
         headers: new Headers({
           Authorization: token,
@@ -95,7 +96,7 @@ export const startAddMeasure = ({
 
     return dispatch(addMeasure({
       ...returnedMeasure,
-      image: `http://localhost:3000${returnedMeasure.image}`,
+      image: `${host}${returnedMeasure.image}`,
     }));
   } catch (err) {
     // TODO: handle errors with an errors reducer
@@ -110,7 +111,7 @@ export const startRemoveMeasure = id => async (dispatch, getState) => {
     const { auth: { token } } = getState();
 
     const response = await fetch(
-      `http://localhost:3000/measures/${id}`,
+      `${host}/measures/${id}`,
       {
         headers: new Headers({
           Authorization: token,
@@ -157,7 +158,7 @@ export const startEditMeasure = (id, {
     formData.append('unit', unit);
 
     const response = await fetch(
-      `http://localhost:3000/measures/${id}`,
+      `${host}/measures/${id}`,
       {
         method: 'PUT',
         headers: new Headers({
@@ -177,7 +178,7 @@ export const startEditMeasure = (id, {
 
     return dispatch(editMeasure(id, {
       title: data.title,
-      image: `http://localhost:3000${data.image}`,
+      image: `${host}${data.image}`,
       video: data.video,
       unit: data.unit,
     }));

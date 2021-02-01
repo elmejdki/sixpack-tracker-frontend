@@ -1,5 +1,6 @@
 import { fixMeasurements, sortMeasurements, restructureMeasurements } from '../helpers/measurements';
 import { SET_MEASUREMENTS, ADD_MEASUREMENTS } from '../action_types';
+import { host } from '../usefull_vars';
 
 export const setMeasurements = measurements => ({
   type: SET_MEASUREMENTS,
@@ -16,7 +17,7 @@ export const startSetMeasurements = () => async (dispatch, getState) => {
     const { auth: { token } } = getState();
 
     const response = await fetch(
-      'http://localhost:3000/measurements',
+      `${host}/measurements`,
       {
         headers: new Headers({
           Authorization: token,
@@ -50,7 +51,7 @@ export const startAddMeasurements = measurements => async (dispatch, getState) =
     const { auth: { token } } = getState();
 
     const response = await fetch(
-      'http://localhost:3000/measurements',
+      `${host}/measurements`,
       {
         headers: new Headers({
           Authorization: token,

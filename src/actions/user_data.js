@@ -1,4 +1,5 @@
 import { SET_USER_DATA } from '../action_types';
+import { host } from '../usefull_vars';
 
 export const setUserData = data => ({
   type: SET_USER_DATA,
@@ -8,7 +9,7 @@ export const setUserData = data => ({
 export const startSetUserData = () => async (dispatch, getState) => {
   try {
     const { auth: { token } } = getState();
-    const response = await fetch('http://localhost:3000/info', {
+    const response = await fetch(`${host}/info`, {
       headers: {
         Authorization: token,
         'Content-Type': 'application/json',

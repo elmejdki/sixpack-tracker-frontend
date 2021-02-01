@@ -1,8 +1,8 @@
-export const fixMeasureImages = measures => measures.map(
+import { host } from '../usefull_vars';
+
+export default measures => measures.map(
   measure => ({
     ...measure,
-    image: `http://localhost:3000${measure.image}`,
+    image: `${host}${measure.image}`,
   }),
 );
-
-export const name = 'zakariae';

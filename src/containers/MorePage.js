@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { host } from '../usefull_vars';
 import Header from './Header';
 import target from '../assets/images/target.png';
 import email from '../assets/images/email.png';
@@ -24,7 +25,7 @@ const MorePage = ({ userData }) => (
       >
         <img
           alt="user face hahaha"
-          src={`http://localhost:3000${userData.avatar}`}
+          src={`${host}${userData.avatar}`}
         />
         <div
           className={info}

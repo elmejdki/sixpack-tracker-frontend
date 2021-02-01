@@ -1,4 +1,5 @@
 import moment from 'moment';
+import { host } from '../usefull_vars';
 
 export const getMeasurements = (measures, measurements) => {
   if (measurements.length === measures.length) {
@@ -35,7 +36,7 @@ export const fixMeasurements = measurements => measurements.map(({
   created_at: moment(createdAt).format('MMM D YYYY'),
   measure: {
     ...measure,
-    image: `http://localhost:3000${measure.image}`,
+    image: `${host}${measure.image}`,
   },
 }));
 
