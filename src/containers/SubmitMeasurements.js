@@ -12,6 +12,7 @@ import {
   container,
   zeroHeight,
   overflowY,
+  smallBottomPadding,
 } from '../stylesheet/CommonPage.module.css';
 
 const SubmitMeasurements = ({ measurements, handleSlideToLeft, onSubmit }) => (
@@ -34,21 +35,23 @@ const SubmitMeasurements = ({ measurements, handleSlideToLeft, onSubmit }) => (
           />
         ))
       }
-      <div
-        className={buttonsContainer}
-      >
-        <button
-          type="button"
-          onClick={handleSlideToLeft}
+      <div className={smallBottomPadding}>
+        <div
+          className={buttonsContainer}
         >
-          Prev
-        </button>
-        <button
-          type="button"
-          onClick={onSubmit}
-        >
-          Submit
-        </button>
+          <button
+            type="button"
+            onClick={handleSlideToLeft}
+          >
+            Prev
+          </button>
+          <button
+            type="button"
+            onClick={onSubmit}
+          >
+            Submit
+          </button>
+        </div>
       </div>
     </div>
   </div>
