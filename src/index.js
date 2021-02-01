@@ -7,6 +7,7 @@ import { login, logout } from './actions/auth';
 import { startSetMeasurements } from './actions/measurements';
 import { startSetMeasures } from './actions/measures';
 import Loader from './components/Loader';
+import ErrorDisplayer from './containers/ErrorDisplayer';
 import './index.css';
 import { startSetUserData } from './actions/user_data';
 import { fullHeight } from './stylesheet/CommonPage.module.css';
@@ -16,6 +17,7 @@ const store = configureStore();
 const jsx = (
   <React.StrictMode>
     <Provider store={store}>
+      <ErrorDisplayer />
       <AppRouter />
     </Provider>
   </React.StrictMode>
