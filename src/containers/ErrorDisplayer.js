@@ -7,11 +7,17 @@ import {
 } from '../stylesheet/CommonPage.module.css';
 
 const ErrorDisplayer = ({ isError, message }) => (
-  <div
-    className={`${float} ${isError ? red : green}`}
-  >
-    {message}
-  </div>
+  <>
+    {
+      message && (
+        <div
+          className={`${float} ${isError ? red : green}`}
+        >
+          {message}
+        </div>
+      )
+    }
+  </>
 );
 
 ErrorDisplayer.propTypes = {

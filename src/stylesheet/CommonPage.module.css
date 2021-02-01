@@ -38,3 +38,24 @@
 .whiteBackground {
   background-color: white;
 }
+
+.float {
+  position: fixed;
+  top: 60px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  padding: 5px 10px;
+  width: calc(100vw - 100px);
+  left: calc(100vw / 2 - (100vw - 100px) / 2);
+  font-weight: lighter;
+  z-index: 100;
+}
+
+.red {
+  background-color: #f32a2b;
+}
+
+.green {
+  background-color: #69e263;
+}
