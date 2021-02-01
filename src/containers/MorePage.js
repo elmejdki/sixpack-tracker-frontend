@@ -49,7 +49,7 @@ const MorePage = ({ userData }) => (
           alt="target"
           src={email}
         />
-        <div>Mailing listl</div>
+        <div>Mailing list</div>
       </div>
       <div
         className={link}
