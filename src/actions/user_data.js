@@ -23,7 +23,7 @@ export const startSetUserData = () => async (dispatch, getState) => {
     if (response.status === 200) {
       dispatch(setUserData({
         ...data,
-        avatar: data.avatar || avatar,
+        avatar: data.avatar ? `${host}${data.avatar}` : avatar,
       }));
     }
 
