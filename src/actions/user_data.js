@@ -1,5 +1,7 @@
 import { SET_USER_DATA } from '../action_types';
+import errorHandler from '../helpers/error';
 import { host } from '../usefull_vars';
+import avatar from '../assets/images/avatar.png';
 
 export const setUserData = data => ({
   type: SET_USER_DATA,
@@ -19,17 +21,14 @@ export const startSetUserData = () => async (dispatch, getState) => {
     const data = await response.json();
 
     if (response.status === 200) {
-      dispatch(setUserData(data));
+      dispatch(setUserData({
+        ...data,
+        avatar: data.avatar || avatar,
+      }));
     }
 
-    // TODO: handle errors with redux
-    return {
-      error: data.message,
-    };
+    return errorHandler(dispatch, data.message, true);
   } catch (err) {
-    // TODO: handle errors with redux
-    return {
-      error: err.message,
-    };
+    return errorHandler(dispatch, err.message, true);
   }
 };
