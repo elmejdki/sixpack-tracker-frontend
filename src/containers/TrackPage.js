@@ -6,13 +6,14 @@ import MeasurementScore from '../components/MeasurementScore';
 import {
   container,
   removeWhiteSpaceOnTop,
+  extrasSpaceBottom,
 } from '../stylesheet/CommonPage.module.css';
 import { getScore } from '../helpers/measurements';
 
 const TrackPage = ({ measurements }) => (
   <div>
     <Header title="Track.it" />
-    <div className={container}>
+    <div className={`${container} ${extrasSpaceBottom}`}>
       <div className={removeWhiteSpaceOnTop} />
       {
         measurements.map(({
