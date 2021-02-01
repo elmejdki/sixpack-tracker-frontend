@@ -71,8 +71,18 @@
 .message {
   font-size: 22px;
   font-weight: lighter;
-  padding: 20px 40px;
   text-align: center;
+  background: #213246;
+  color: white;
+  border-radius: 50%;
+  width: calc(100vw - 30px);
+  height: calc(100vw - 30px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 15px solid white;
+  padding: 20px;
 }
 
 .message > div {

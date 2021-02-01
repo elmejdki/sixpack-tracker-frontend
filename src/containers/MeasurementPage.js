@@ -17,7 +17,6 @@ import {
 import {
   container,
   fullHeight,
-  whiteBackground,
 } from '../stylesheet/CommonPage.module.css';
 
 const MeasurementPage = ({ measures, startAddMeasurements, lastMeasurement }) => {
@@ -96,7 +95,7 @@ const MeasurementPage = ({ measures, startAddMeasurements, lastMeasurement }) =>
             {
               lastMeasurement.created_at === moment().format('MMM D YYYY') ? (
                 <div
-                  className={`${container} ${measurementContainer} ${whiteBackground}`}
+                  className={`${container} ${measurementContainer}`}
                 >
                   <div
                     className={message}
