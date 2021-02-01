@@ -5,6 +5,7 @@ import Header from './Header';
 import MeasurementScore from '../components/MeasurementScore';
 import {
   container,
+  removeWhiteSpaceOnTop,
 } from '../stylesheet/CommonPage.module.css';
 import { getScore } from '../helpers/measurements';
 
@@ -12,6 +13,7 @@ const TrackPage = ({ measurements }) => (
   <div>
     <Header title="Track.it" />
     <div className={container}>
+      <div className={removeWhiteSpaceOnTop} />
       {
         measurements.map(({
           created_at: createdAt, measurements,
