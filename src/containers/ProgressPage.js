@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Header from './Header';
-import ProgressCircle from './ProgressCircle';
-import ProgressChart from './ProgressChart';
-import MeasurementDisplay from './MeasurementDisplay';
+import ProgressCircle from '../components/ProgressCircle';
+import ProgressChart from '../components/ProgressChart';
+import MeasurementDisplay from '../components/MeasurementDisplay';
 import { getProgressPageMeasurements, getScore } from '../helpers/measurements';
 import { superGoal, repGoal } from '../usefull_vars';
 import {

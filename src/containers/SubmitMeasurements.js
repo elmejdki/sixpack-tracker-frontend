@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import Measurement from './Measurement';
+import Measurement from '../components/Measurement';
 import { getMeasurements } from '../helpers/measurements';
 import {
   pageWraper,

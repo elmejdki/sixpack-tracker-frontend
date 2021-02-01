@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { startSignUp } from '../actions/auth';
-import Loader from './Loader';
-import ImageUploader from './ImageUploader';
-import TextInput from './TextInput';
-import PasswordInput from './PasswordInput';
+import Loader from '../components/Loader';
+import ImageUploader from '../components/ImageUploader';
+import TextInput from '../components/TextInput';
+import PasswordInput from '../components/PasswordInput';
 import {
   container,
   form,

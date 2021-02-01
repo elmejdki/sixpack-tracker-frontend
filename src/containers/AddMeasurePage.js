@@ -1,11 +1,10 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import { useHistory, useParams } from 'react-router-dom';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { startEditMeasure } from '../actions/measures';
+import { startAddMeasure } from '../actions/measures';
 import Header from './Header';
-import Loader from './Loader';
+import Loader from '../components/Loader';
 import MeasureForm from './MeasureForm';
 import {
   container as formContainer,
@@ -13,15 +12,14 @@ import {
 } from '../stylesheet/Form.module.css';
 import { container, fullHeight } from '../stylesheet/CommonPage.module.css';
 
-const EditMeasurePage = ({ startEditMeasure, measure }) => {
-  const { id } = useParams();
+const AddMeasurePage = ({ startAddMeasure }) => {
   const history = useHistory();
 
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = updates => {
+  const handleSubmit = measure => {
     setLoading(true);
-    startEditMeasure(Number(id), updates).then(({ error }) => {
+    startAddMeasure(measure).then(({ error }) => {
       if (error) {
         setLoading(false);
       } else {
@@ -37,13 +35,11 @@ const EditMeasurePage = ({ startEditMeasure, measure }) => {
           <Loader height={fullHeight} />
         ) : (
           <div>
-            <Header title="Edit Measure" back />
+            <Header title="Add Measure" back />
             <div className={`${container}`}>
               <div className={`${formContainer} ${mNone}`}>
                 <MeasureForm
-                  {...measure}
                   onSubmit={handleSubmit}
-                  update
                 />
               </div>
             </div>
@@ -54,17 +50,12 @@ const EditMeasurePage = ({ startEditMeasure, measure }) => {
   );
 };
 
-EditMeasurePage.propTypes = {
-  startEditMeasure: PropTypes.func.isRequired,
-  measure: PropTypes.objectOf(PropTypes.any).isRequired,
+AddMeasurePage.propTypes = {
+  startAddMeasure: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = {
-  startEditMeasure,
+  startAddMeasure,
 };
 
-const mapStateToProps = ({ measures }, props) => ({
-  measure: measures.find(measure => measure.id === Number(props.match.params.id)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(EditMeasurePage);
+export default connect(null, mapDispatchToProps)(AddMeasurePage);

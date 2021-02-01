@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import AdminLink from './AdminLink';
+import AdminLink from '../components/AdminLink';
 import {
   link, links, linkImage, linkTitle, activeLink,
 } from '../stylesheet/Navigator.module.css';

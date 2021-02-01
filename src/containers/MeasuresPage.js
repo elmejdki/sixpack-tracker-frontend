@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Header from './Header';
-import Measure from './Measure';
+import Measure from '../components/Measure';
 import plus from '../assets/images/plus.png';
 import { container, pageBottomPadding } from '../stylesheet/CommonPage.module.css';
 import {

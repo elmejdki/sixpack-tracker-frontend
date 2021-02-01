@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { startLogIn } from '../actions/auth';
-import Loader from './Loader';
-import TextInput from './TextInput';
-import PasswordInput from './PasswordInput';
+import Loader from '../components/Loader';
+import TextInput from '../components/TextInput';
+import PasswordInput from '../components/PasswordInput';
 import {
   appLogo,
   appTitle,

@@ -4,17 +4,17 @@ import { Router, Route, Switch } from 'react-router-dom';
 import ConnectedPublicRoute from './PublicRoute';
 import ConnectedPrivateRoute from './PrivateRoute';
 import ConnectedRoleRoute from './RoleRoute';
-import MeasurementPage from '../components/MeasurementPage';
-import LoginPage from '../components/LoginPage';
-import SignUpPage from '../components/SignUpPage';
-import MorePage from '../components/MorePage';
+import MeasurementPage from '../containers/MeasurementPage';
+import LoginPage from '../containers/LoginPage';
+import SignUpPage from '../containers/SignUpPage';
+import MorePage from '../containers/MorePage';
 import NotFoundPage from '../components/NotFoundPage';
-import ProgressPage from '../components/ProgressPage';
-import TrackPage from '../components/TrackPage';
-import MeasuresPage from '../components/MeasuresPage';
-import AddMeasurePage from '../components/AddMeasurePage';
-import EditMeasurePage from '../components/EditMeasurePage';
-import ScorePage from '../components/ScorePage';
+import ProgressPage from '../containers/ProgressPage';
+import TrackPage from '../containers/TrackPage';
+import MeasuresPage from '../containers/MeasuresPage';
+import AddMeasurePage from '../containers/AddMeasurePage';
+import EditMeasurePage from '../containers/EditMeasurePage';
+import ScorePage from '../containers/ScorePage';
 
 export const history = createBrowserHistory();
 

@@ -3,7 +3,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect, Route } from 'react-router-dom';
-import Navigator from '../components/Navigator';
+import Navigator from '../containers/Navigator';
 
 export const PrivateRoute = ({
   isAuthenticated,

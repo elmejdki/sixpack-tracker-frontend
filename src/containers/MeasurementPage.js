@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import moment from 'moment';
 import { Link, useHistory } from 'react-router-dom';
 import Header from './Header';
-import Welcome from './Welcome';
-import Loader from './Loader';
-import MeasurementForm from './MeasurementForm';
+import Welcome from '../components/Welcome';
+import Loader from '../components/Loader';
+import MeasurementForm from '../components/MeasurementForm';
 import SubmitMeasurements from './SubmitMeasurements';
 import { startAddMeasurements } from '../actions/measurements';
 import {

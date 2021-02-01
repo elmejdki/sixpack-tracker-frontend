@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { startRemoveMeasure } from '../actions/measures';
-import ImageUploader from './ImageUploader';
-import TextInput from './TextInput';
+import ImageUploader from '../components/ImageUploader';
+import TextInput from '../components/TextInput';
 import {
   form,
   submitButton,
