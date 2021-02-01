@@ -1,8 +1,17 @@
-import React from 'react';
+import Header from '../containers/Header';
+import {
+  container,
+} from '../stylesheet/NotFoundPage.module.css';
 
 const NotFoundPage = () => (
   <div>
-    <h1>NotFound Page</h1>
+    <Header title="GO BACK" back />
+    <div
+      className={container}
+    >
+      <div>404</div>
+      <div>Page Not Found</div>
+    </div>
   </div>
 );
 

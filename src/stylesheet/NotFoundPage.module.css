@@ -1,0 +1,16 @@
+.container {
+  background: linear-gradient(0.35turn, #41b5e8, #313944);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: calc(100vh - 56px);
+  color: white;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.container > div:first-child {
+  font-size: 150px;
+  line-height: 1;
+}
