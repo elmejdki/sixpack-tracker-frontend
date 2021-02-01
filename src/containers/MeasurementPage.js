@@ -93,7 +93,7 @@ const MeasurementPage = ({ measures, startAddMeasurements, lastMeasurement }) =>
         ) : (
           <div className={`${container} ${measurementContainer}`}>
             {
-              lastMeasurement.created_at === moment().format('MMM D YYYY') ? (
+              lastMeasurement.created_at === moment().format('MMM DD YYYY') ? (
                 <div
                   className={`${container} ${measurementContainer}`}
                 >

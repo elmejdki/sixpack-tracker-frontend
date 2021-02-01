@@ -33,7 +33,7 @@ export const fixMeasurements = measurements => measurements.map(({
 }) => ({
   id,
   value,
-  created_at: moment(createdAt).format('MMM D YYYY'),
+  created_at: moment(createdAt).format('MMM DD YYYY'),
   measure: {
     ...measure,
     image: `${host}${measure.image}`,
@@ -94,8 +94,8 @@ export const findMeasurementByDate = (
   }
 
   const mid = Math.floor((end + start) / 2);
-  const measurementDateMilli = moment(measurements[mid].created_at, 'DD MMM YYYY').valueOf();
-  const dateMilli = moment(date, 'DD MMM YYYY').valueOf();
+  const measurementDateMilli = moment(measurements[mid].created_at, 'MMM DD YYYY').valueOf();
+  const dateMilli = moment(date, 'MMM DD YYYY').valueOf();
 
   if (measurementDateMilli < dateMilli) {
     return findMeasurementByDate(measurements, date, start, mid - 1);
