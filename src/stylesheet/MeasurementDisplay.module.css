@@ -2,7 +2,7 @@
   background-color: white;
   padding: 10px;
   margin: 10px;
-  width: calc(100vw / 2 - 20px);
+  width: calc(100vw / 2 - 21px);
   display: flex;
   flex-direction: column;
 }
