@@ -1,6 +1,51 @@
-# Getting Started with Create React App
+# Six Pack Tracker
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Six Pack Tracker is a 30 days workout app challenge. that, challenges the users to do a certain type of ABS exercises for 30 days, with a goal of repetitions for every move in every day. This app also shows to the users their progress to motivate them to do more. You should also not that the app is not responsive for Desktop, you can open it only on mobile or tablet. This repository is the frontend part of the app cause it's a Full Stack Application built using React/Redux and Ruby on Rails. You can find the backend repository [here](https://github.com/elmejdki/sixpack-tracker-api).
+
+## Project Preview:
+
+![project images](./screenshot.png)
+
+## Built With
+
+- ReactJS 17,
+- ReactDOM 17,
+- Redux,
+- create-react-app,
+- CSS,
+- moment.js,
+- recharts,
+- Babel
+
+## Live Demo
+
+[Live Demo Link](https://sixpacktracker.herokuapp.com/) change me
+
+## Getting Started
+
+### Prerequisites
+
+In order to have this project up and running you will need:
+
+- NodeJS 10+
+
+### Setup
+
+First, you need to clone this project using one of the links above, using this command:
+
+```Javascript
+git clone RESPOSITRY_LINK
+```
+
+Then you should run: `npm install`
+
+And afterward, you supposed to run: `npm start`, to run the project in your local machine.
+
+Then head to the localhost on port 8080 `https://localhost:8080`
+
+Remember if you want to connect it with the local backend open `src/usefull_vars/index.js` and change the host variable to `localhost:3000` 
+
+Congrats the project is fully working.
 
 ## Available Scripts
 
@@ -9,7 +54,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:8080](http://localhost:8080) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
@@ -39,32 +84,24 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## Authors
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+👤 **Zakariae El Mejdki**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Github: [@elmejdki](https://github.com/elmejdki)
+- Twitter: [@zakariae_elmejdki](https://twitter.com/zakariaemejdki)
+- Linkedin: [Zakariae El Mejdki](https://www.linkedin.com/in/zakariaeelmejdki/)
 
-### Code Splitting
+## 🤝 Contributing
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Contributions, issues and feature requests are welcome!
 
-### Analyzing the Bundle Size
+Feel free to check the [issues page](https://github.com/elmejdki/sixpack-tracker-frontend/issues).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Show your support
 
-### Making a Progressive Web App
+Give a ⭐️ if you like this project!
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## 📝 License
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+This project is [MIT](lic.url) licensed.
