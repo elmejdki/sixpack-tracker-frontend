@@ -2,7 +2,7 @@
 
 **This is the final capstone project required by [Microverse](https://www.microverse.org/). After finishing the whole program, they have picked this project for me to prove my technical knowledge in React/Redux and Ruby on Rails, you can find the requirement [here](https://www.notion.so/Final-Capstone-Project-Tracking-App-22e454da738c46efaf17721826841772#2710d5572c59407c90bef34f3cbf53e3)**
 
-> Six Pack Tracker is a 30 days workout app challenge. that, challenges the users to do a certain type of ABS exercises for 30 days, with a repetitions goal for every move in every day. This app also shows to the users their progress to motivate them to do more. You should also not that the app is not responsive for Desktop, you can open it only on mobile or tablet. This repository is the frontend part of the app cause it's a Full Stack Application built using React/Redux and Ruby on Rails. You can find the backend repository [here](https://github.com/elmejdki/sixpack-tracker-api).
+> Six Pack Tracker is a 30 days workout app challenge. that, challenges the users to do a certain type of ABS exercises for 30 days, with a repetitions goal for every move in every day. This app also shows to the users their progress to motivate them to do more. You should also not that the app is not responsive for Desktop, you can open it only on mobile or tablet. This repository is the Front End part of the app cause it's a Full Stack Application built using React/Redux and Ruby on Rails. You can find the Back End repository [here](https://github.com/elmejdki/sixpack-tracker-api).
 
 ## Project Preview:
 
@@ -15,10 +15,10 @@
 - A user can check videos and instructions on the moves that he should do.
 - A user can track his progress on the app monthly or daily through the track.it or progress pages.
 - A user can see a summary of his measurements.
-- The App has a control panel also for editing measures, or exercises that the users should do.
-- An Admin can add Exercises.
-- An Admin can Edit Exercices.
-- An Admin can Remove Exercices.
+- The app has a control panel also for editing measures, or exercises that the users should do.
+- An admin can add Exercises.
+- An admin can Edit Exercises.
+- An admin can Remove Exercises.
 
 ## Built With
 
@@ -57,7 +57,7 @@ And afterward, you supposed to run: `npm start`, to run the project in your loca
 
 Then head to the localhost on port 8080 `https://localhost:8080`
 
-Remember if you want to connect it with the local backend open `src/usefull_vars/index.js` and change the host variable to `localhost:3000` 
+Remember if you want to connect it with the local Back End Repository open `src/usefull_vars/index.js` and change the host variable to `localhost:3000` 
 
 Congrats the project is fully working.
 
