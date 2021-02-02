@@ -2,7 +2,7 @@
 
 **This is the final capstone project required by [Microverse](https://www.microverse.org/). After finishing the whole program, they have picked this project for me to prove my technical knowledge in React/Redux and Ruby on Rails, you can find the requirement [here](https://www.notion.so/Final-Capstone-Project-Tracking-App-22e454da738c46efaf17721826841772#2710d5572c59407c90bef34f3cbf53e3)**
 
-> Six Pack Tracker is a 30 days workout app challenge. that, challenges the users to do a certain type of ABS exercises for 30 days, with a repetitions goal for every move in every day. This app also shows to the users their progress to motivate them to do more. You should also not that the app is not responsive for Desktop, you can open it only on mobile or tablet. This repository is the Front End part of the app cause it's a Full Stack Application built using React/Redux and Ruby on Rails. You can find the Back End repository [here](https://github.com/elmejdki/sixpack-tracker-api).
+> Six Pack Tracker is a 30 days workout app challenge. that, challenges the users to do a certain type of ABS exercises for 30 days, with a repetitions goal for every move in every day. This app also shows to the users their progress to motivate them to do more. You should also not that the app is not responsive for Desktop, you can open it only on mobile or tablet. This repository is the Front End part of the app cause it's a Full Stack Application built using React/Redux and Ruby on Rails. **You can find the Back End repository [here](https://github.com/elmejdki/sixpack-tracker-api).**
 
 ## Project Preview:
 
