@@ -45,6 +45,10 @@ export const sortMeasurements = measurements => measurements.sort(
 );
 
 export const restructureMeasurements = measurements => {
+  if (measurements.length === 0) {
+    return [];
+  }
+
   const result = [];
 
   let index = 0;
