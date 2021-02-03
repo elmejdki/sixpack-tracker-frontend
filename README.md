@@ -112,6 +112,10 @@ Contributions, issues and feature requests are welcome!
 
 Feel free to check the [issues page](https://github.com/elmejdki/sixpack-tracker-frontend/issues).
 
+## Credits
+
+Thanks to [Gregoire Vella](https://www.behance.net/mathewnjuguna) for his awesome design work. That I based my work on, you can find it on this [link](https://www.behance.net/gallery/13271423/Bodytrackit-An-iOs-app-Branding-UX-and-UI).
+
 ## Show your support
 
 Give a ⭐️ if you like this project!
