@@ -1,17 +1,59 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'react-redux';
+import AppRouter, { history } from './routers/AppRouter';
+import configureStore from './store/configureStore';
+import { login, logout } from './actions/auth';
+import { startSetMeasurements } from './actions/measurements';
+import { startSetMeasures } from './actions/measures';
+import Loader from './components/Loader';
+import ErrorDisplayer from './containers/ErrorDisplayer';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import { startSetUserData } from './actions/user_data';
+import { fullHeight } from './stylesheet/CommonPage.module.css';
 
-ReactDOM.render(
+const store = configureStore();
+
+const jsx = (
   <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <Provider store={store}>
+      <ErrorDisplayer />
+      <AppRouter />
+    </Provider>
+  </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+let hasRendered = false;
+const renderApp = () => {
+  if (!hasRendered) {
+    ReactDOM.render(jsx, document.getElementById('root'));
+    hasRendered = true;
+  }
+};
+
+ReactDOM.render(<Loader height={fullHeight} />, document.getElementById('root'));
+
+const token = localStorage.getItem('token');
+
+if (token) {
+  store.dispatch(login(token));
+  store.dispatch(startSetUserData())
+    .then(() => store.dispatch(startSetMeasures()))
+    .then(() => store.dispatch(startSetMeasurements()))
+    .then(data => {
+      if (!data.error) {
+        renderApp();
+        if (history.location.pathname === '/') {
+          history.push('/track');
+        }
+      } else {
+        store.dispatch(logout());
+        localStorage.removeItem('token');
+        renderApp();
+        history.push('/');
+      }
+    });
+} else {
+  renderApp();
+  history.push('/');
+}

@@ -1,0 +1,107 @@
+.circleSize {
+  width: 148px;
+  height: 148px;
+}
+
+.strokeSize {
+  stroke-dasharray: 440;
+  stroke-dashoffset: 440;
+  stroke-width: 7px;
+}
+
+.progressContainer {
+  background-color: white;
+  margin: 10px;
+}
+
+.scoreStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  color: rgb(110, 122, 122);
+  font-size: 18px;
+}
+
+.scoreText {
+  color: #91e28c;
+  font-size: 26px;
+  border: 1px solid rgba(226, 226, 226, 0.603);
+  padding: 0 1px;
+  padding-bottom: 3px;
+  font-weight: bold;
+  line-height: 1;
+  margin: 5px 0;
+  border-right: none;
+  border-left: none;
+}
+
+/* Remained reps circle styles */
+.remainCircleSize {
+  width: 88px;
+  height: 88px;
+}
+
+.remainStrokeSize {
+  stroke-dasharray: 252;
+  stroke-dashoffset: 252;
+  stroke-width: 4;
+}
+
+.remainContainer {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  margin: 0 10px;
+}
+
+.remainStyle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.remainText {
+  color: #f32a2b;
+  font-size: 22px;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+
+.remainRepsText {
+  margin-left: 20px;
+  font-weight: lighter;
+  font-size: 24px;
+  color: #343b42;
+}
+
+.measurementDisplayContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.headline {
+  font-weight: lighter;
+  color: #343b42;
+  font-size: 30px;
+  background-color: white;
+  text-align: center;
+  padding: 5px 0;
+  margin: 10px;
+}
+
+.centerButtons {
+  display: flex;
+  justify-content: center;
+}

@@ -1,0 +1,96 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.pageWraper {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.minContent {
+  display: flex;
+  position: absolute;
+  left: 0;
+  justify-content: center;
+  align-items: center;
+  width: min-content;
+  transition: 0.7s left cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.welcomeContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 40px;
+  padding: 50px 0;
+  width: 260px;
+  background-color: white;
+}
+
+.welcomeText {
+  color: grey;
+  font-weight: lighter;
+  width: 169px;
+  text-align: center;
+}
+
+.reversedTriangle {
+  border-top: 30px solid white;
+  border-left: 30px solid white;
+  transform: rotate(-45deg);
+  position: absolute;
+  bottom: -14px;
+}
+
+.button {
+  border-radius: 50%;
+  min-width: 260px;
+  max-width: 260px;
+  max-height: 260px;
+  min-height: 260px;
+  border: 20px solid white;
+  background-color: #41b5e8;
+  color: white;
+  font-weight: lighter;
+  font-size: 60px;
+  outline: none;
+}
+
+.button:focus {
+  background-color: white;
+  color: #41b5e8;
+}
+
+.message {
+  font-size: 22px;
+  font-weight: lighter;
+  text-align: center;
+  background: #213246;
+  color: white;
+  border-radius: 50%;
+  width: calc(100vw - 30px);
+  height: calc(100vw - 30px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 15px solid white;
+  padding: 20px;
+}
+
+.message > div {
+  padding: 20px 0;
+}
+
+.message > div > a {
+  color: #41b5e8;
+  text-decoration: none;
+  font-weight: bold;
+}

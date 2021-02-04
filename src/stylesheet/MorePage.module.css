@@ -1,0 +1,44 @@
+.user {
+  background-color: white;
+  padding: 10px 30px;
+  display: flex;
+  align-items: center;
+}
+
+.user > img {
+  width: 70px;
+  height: 70px;
+  border: 5px solid #41b5e8;
+  margin-right: 20px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.info div:first-child {
+  color: #18506b;
+  font-size: 25px;
+  text-transform: capitalize;
+  line-height: 1;
+  font-weight: bold;
+}
+
+.info div:last-child {
+  color: #41b5e8;
+  font-size: 14px;
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  color: #18506b;
+  font-size: 18px;
+  border-bottom: 1px solid #dfdfdf;
+  background-color: #eeeff1;
+}
+
+.link img {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+  margin: 20px;
+}

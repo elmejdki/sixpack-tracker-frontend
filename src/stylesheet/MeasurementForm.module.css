@@ -1,0 +1,74 @@
+.moveImage {
+  width: 260px;
+  height: 150px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.moveTitle {
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.inputControl {
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputControl button {
+  border: none;
+  background: none;
+  font-size: 30px;
+  font-weight: bold;
+  width: 40px;
+  padding: 5px;
+  outline: none;
+}
+
+.inputControl > input {
+  width: 80px;
+  padding: 2px 5px;
+  margin: 0 10px;
+  font-size: 30px;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+.moveUnit {
+  font-size: 18px;
+  margin-top: 20px;
+  text-transform: capitalize;
+  font-weight: bold;
+  color: #313944;
+}
+
+.buttonsContainer {
+  margin-top: 20px;
+  background-color: white;
+  padding: 5px;
+}
+
+.buttonsContainer > button {
+  border: none;
+  font-size: 18px;
+  padding: 16px 50px;
+  text-transform: capitalize;
+  outline: none;
+}
+
+.buttonsContainer > button:first-child {
+  color: #313944;
+  background-color: white;
+}
+
+.buttonsContainer > button:last-child {
+  background-color: #64d160;
+  color: white;
+}
+
+.buttonsContainer > button:disabled {
+  background-color: #a8dfa6;
+}

@@ -1,0 +1,31 @@
+.container {
+  display: flex;
+  background-color: white;
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.mImage {
+  width: 140px;
+  height: 80px;
+  object-position: center;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.mTitle {
+  font-size: 20px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.mValue {
+  margin-right: 5px;
+  font-size: 24px;
+  color: rgb(73, 73, 73);
+}
+
+.mUnit {
+  text-transform: lowercase;
+}

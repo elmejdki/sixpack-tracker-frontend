@@ -1,0 +1,137 @@
+.container {
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  flex-direction: column;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+}
+
+.fileTitle {
+  font-weight: bold;
+  text-align: center;
+}
+
+.headline {
+  color: rgb(93, 93, 93);
+  font-size: 40px;
+  margin-top: 30px;
+}
+
+.errorText {
+  color: rgb(240, 60, 60);
+  font-weight: bold;
+  padding-left: 5px;
+  font-size: 14px;
+}
+
+.input {
+  height: 40px;
+  padding: 14px 10px;
+  font-size: 20px;
+  width: 100%;
+}
+
+.inputGroup {
+  margin-top: 20px;
+  position: relative;
+  width: 100%;
+}
+
+.passwordButton {
+  position: absolute;
+  right: 0;
+  top: 3px;
+  height: 40px;
+  width: 50px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.passwordImage {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+}
+
+.submitButton {
+  color: white;
+  background-color: #313944;
+  border: none;
+  font-size: 18px;
+  padding: 10px 15px;
+  align-self: flex-end;
+  margin-top: 20px;
+  outline: none;
+  font-weight: bold;
+}
+
+.submitButton:focus {
+  background-color: #41b5e8;
+}
+
+.submitSignup {
+  background-color: #41b5e8;
+}
+
+.submitSignup:focus {
+  background-color: #313944;
+}
+
+.paraghraph {
+  color: grey;
+  margin-top: 30px;
+}
+
+.link {
+  color: #41b5e8;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.customFileInput {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.fileButton {
+  background-color: transparent;
+  border: none;
+  margin: 0 auto;
+  display: block;
+  outline: none;
+}
+
+.noMargin {
+  margin: 0;
+}
+
+.imageInput {
+  min-width: 120px;
+  min-height: 120px;
+  max-width: 120px;
+  max-height: 120px;
+  object-fit: cover;
+  object-position: center;
+  border: 0.5px solid rgb(155, 155, 155);
+}
+
+.round {
+  border-radius: 50%;
+}
+
+.mNone {
+  margin: 0;
+}
+
+.deleteButton {
+  background-color: rgb(255, 12, 12);
+}

@@ -1,0 +1,14 @@
+.appLogo {
+  display: block;
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin: 20px auto;
+}
+
+.appTitle {
+  color: grey;
+  text-align: center;
+  font-size: 20px;
+  font-weight: lighter;
+}

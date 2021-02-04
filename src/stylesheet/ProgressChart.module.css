@@ -1,0 +1,35 @@
+.container {
+  margin: 10px;
+  background-color: white;
+}
+
+.chartContainer {
+  width: 100%;
+  height: 100px;
+}
+
+.progressDays {
+  background-color: white;
+  padding: 5px 10px;
+  font-weight: lighter;
+  color: #616c77;
+  font-size: 14px;
+}
+
+.progressDays span {
+  font-weight: bold;
+}
+
+.goalOverview {
+  background-color: white;
+  padding: 5px 10px;
+  font-weight: lighter;
+  color: #616c77;
+  font-size: 14px;
+  text-align: right;
+}
+
+.goalOverview span {
+  font-weight: bold;
+  color: #41b5e8;
+}

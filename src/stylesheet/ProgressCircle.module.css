@@ -1,0 +1,37 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.wrapper {
+  position: relative;
+  margin: 10px;
+}
+
+.normal {
+  transform: rotate(-90deg);
+}
+
+.fliped {
+  transform: scaleX(-1) rotate(-90deg);
+}
+
+.wrapper svg circle {
+  fill: none;
+  stroke: #000;
+  transform: translate(5px, 5px);
+}
+
+.wrapper svg circle:nth-child(1) {
+  stroke-dashoffset: 0;
+  stroke: #f3f3f3;
+}
+
+.titleText {
+  color: #4d565f;
+  font-weight: lighter;
+  font-size: 14px;
+  padding-bottom: 10px;
+}

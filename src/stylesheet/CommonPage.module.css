@@ -1,0 +1,64 @@
+.container {
+  background-color: #f3f4f6;
+  min-height: calc(100vh - 116px);
+}
+
+.removeWhiteSpaceOnTop {
+  height: 1px;
+  margin-bottom: -1px;
+}
+
+.fullHeight {
+  height: 100vh;
+}
+
+.extrasSpaceBottom {
+  padding-bottom: 100px;
+}
+
+.smallBottomPadding {
+  padding-bottom: 60px;
+}
+
+.pageBottomPadding {
+  padding-bottom: 145px;
+}
+
+.zeroHeight {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 0;
+}
+
+.overflowY {
+  overflow-y: scroll;
+}
+
+.whiteBackground {
+  background-color: white;
+}
+
+.float {
+  position: fixed;
+  top: 60px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  padding: 8px 10px;
+  width: calc(100vw - 100px);
+  left: calc(100vw / 2 - (100vw - 100px) / 2);
+  font-weight: lighter;
+  z-index: 100;
+  text-transform: capitalize;
+  line-height: 1;
+  border: none;
+}
+
+.red {
+  background-color: #f32a2b;
+}
+
+.green {
+  background-color: #44d63c;
+}

@@ -1,0 +1,31 @@
+.link {
+  position: fixed;
+  bottom: 70px;
+  left: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 70px;
+  min-height: 70px;
+  max-width: 70px;
+  max-height: 70px;
+  border-radius: 50%;
+  box-shadow: 0 0 37px -13px black;
+}
+
+.activeLink {
+  background-color: #41b5e8;
+}
+
+.inActiveLink {
+  background-color: #313944;
+}
+
+.img {
+  min-width: 37px;
+  min-height: 37px;
+  max-width: 37px;
+  max-height: 37px;
+  object-fit: contain;
+  object-position: center;
+}
