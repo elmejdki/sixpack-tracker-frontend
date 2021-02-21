@@ -38,11 +38,15 @@
 ### Test Accounts:
 
 #### Admin:
-   email: admin@sixpack.org
-   password: password
+
+_email:_ admin@sixpack.org
+
+_password:_ password
 #### Normal User:
-   email: goku@sixpack.org
-   password: 123456
+
+_email:_ goku@sixpack.org
+
+_password:_ 123456
 
 ## Getting Started
 
