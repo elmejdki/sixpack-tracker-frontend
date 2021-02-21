@@ -35,6 +35,15 @@
 
 [Live Demo Link](https://sixpacktracker.herokuapp.com/)
 
+### Test Accounts:
+
+#### Admin:
+   email: admin@sixpack.org
+   password: password
+#### Normal User:
+   email: goku@sixpack.org
+   password: 123456
+
 ## Getting Started
 
 ### Prerequisites
